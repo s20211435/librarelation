@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Isbn number:</strong>
+  <%= @ranking.isbn_number %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @ranking.title %>
+</p>
+
+<p>
+  <strong>Author name:</strong>
+  <%= @ranking.author_name %>
+</p>
+
+<p>
+  <strong>Book rank:</strong>
+  <%= @ranking.book_rank %>
+</p>
+
+<%= link_to 'Edit', edit_ranking_path(@ranking) %> |
+<%= link_to 'Back', rankings_path %>

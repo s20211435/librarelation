@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Isbn number:</strong>
+  <%= @request.isbn_number %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @request.title %>
+</p>
+
+<p>
+  <strong>Author name:</strong>
+  <%= @request.author_name %>
+</p>
+
+<p>
+  <strong>Reason:</strong>
+  <%= @request.reason %>
+</p>
+
+<p>
+  <strong>Grade:</strong>
+  <%= @request.grade %>
+</p>
+
+<p>
+  <strong>Class:</strong>
+  <%= @request.class %>
+</p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @request.number %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @request.name %>
+</p>
+
+<%= link_to 'Edit', edit_request_path(@request) %> |
+<%= link_to 'Back', requests_path %>

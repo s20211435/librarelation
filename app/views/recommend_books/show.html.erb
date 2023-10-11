@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Isbn number:</strong>
+  <%= @recommend_book.ISBN_number %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @recommend_book.title %>
+</p>
+
+<p>
+  <strong>Author name:</strong>
+  <%= @recommend_book.author_name %>
+</p>
+
+<p>
+  <strong>Recommend:</strong>
+  <%= @recommend_book.recommend %>
+</p>
+
+<%= link_to 'Edit', edit_recommend_book_path(@recommend_book) %> |
+<%= link_to 'Back', recommend_books_path %>

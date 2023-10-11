@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Recommend Books</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Isbn number</th>
+      <th>Title</th>
+      <th>Author name</th>
+      <th>Recommend</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @recommend_books.each do |recommend_book| %>
+      <tr>
+        <td><%= recommend_book.ISBN_number %></td>
+        <td><%= recommend_book.title %></td>
+        <td><%= recommend_book.author_name %></td>
+        <td><%= recommend_book.recommend %></td>
+        <td><%= link_to 'Show', recommend_book %></td>
+        <td><%= link_to 'Edit', edit_recommend_book_path(recommend_book) %></td>
+        <td><%= link_to 'Destroy', recommend_book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Recommend Book', new_recommend_book_path %>

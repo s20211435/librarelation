@@ -1,0 +1,37 @@
+<%= form_with(model: recommend_book) do |form| %>
+  <% if recommend_book.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(recommend_book.errors.count, "error") %> prohibited this recommend_book from being saved:</h2>
+
+      <ul>
+        <% recommend_book.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :ISBN_number %>
+    <%= form.text_field :ISBN_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :author_name %>
+    <%= form.text_field :author_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :recommend %>
+    <%= form.text_field :recommend %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

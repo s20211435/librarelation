@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Isbn number:</strong>
+  <%= @dealing.isbn_number %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @dealing.title %>
+</p>
+
+<p>
+  <strong>Author name:</strong>
+  <%= @dealing.author_name %>
+</p>
+
+<p>
+  <strong>Condition:</strong>
+  <%= @dealing.condition %>
+</p>
+
+<%= link_to 'Edit', edit_dealing_path(@dealing) %> |
+<%= link_to 'Back', dealings_path %>

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Isbn number:</strong>
+  <%= @new_book.isbn_number %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @new_book.title %>
+</p>
+
+<p>
+  <strong>Author name:</strong>
+  <%= @new_book.author_name %>
+</p>
+
+<p>
+  <strong>Arrival day:</strong>
+  <%= @new_book.arrival_day %>
+</p>
+
+<p>
+  <strong>Lending:</strong>
+  <%= @new_book.lending %>
+</p>
+
+<p>
+  <strong>Book number:</strong>
+  <%= @new_book.book_number %>
+</p>
+
+<p>
+  <strong>Genre:</strong>
+  <%= @new_book.genre %>
+</p>
+
+<%= link_to 'Edit', edit_new_book_path(@new_book) %> |
+<%= link_to 'Back', new_books_path %>

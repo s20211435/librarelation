@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>New Books</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Isbn number</th>
+      <th>Title</th>
+      <th>Author name</th>
+      <th>Arrival day</th>
+      <th>Lending</th>
+      <th>Book number</th>
+      <th>Genre</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @new_books.each do |new_book| %>
+      <tr>
+        <td><%= new_book.isbn_number %></td>
+        <td><%= new_book.title %></td>
+        <td><%= new_book.author_name %></td>
+        <td><%= new_book.arrival_day %></td>
+        <td><%= new_book.lending %></td>
+        <td><%= new_book.book_number %></td>
+        <td><%= new_book.genre %></td>
+        <td><%= link_to 'Show', new_book %></td>
+        <td><%= link_to 'Edit', edit_new_book_path(new_book) %></td>
+        <td><%= link_to 'Destroy', new_book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New New Book', new_new_book_path %>

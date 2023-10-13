@@ -1,24 +1,24 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Isbn number:</strong>
+  <strong>ISBN番号</strong>
   <%= @ranking.isbn_number %>
 </p>
 
 <p>
-  <strong>Title:</strong>
+  <strong>書籍名</strong>
   <%= @ranking.title %>
 </p>
 
 <p>
-  <strong>Author name:</strong>
+  <strong>著者名</strong>
   <%= @ranking.author_name %>
 </p>
 
 <p>
-  <strong>Book rank:</strong>
+  <strong>順位</strong>
   <%= @ranking.book_rank %>
 </p>
 
-<%= link_to 'Edit', edit_ranking_path(@ranking) %> |
-<%= link_to 'Back', rankings_path %>
+<%= link_to '編集', edit_ranking_path(@ranking) %> |
+<%= link_to '戻る', rankings_path %>

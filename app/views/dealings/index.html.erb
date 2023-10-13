@@ -1,14 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Dealings</h1>
+<h1>処分本一覧</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Isbn number</th>
-      <th>Title</th>
-      <th>Author name</th>
-      <th>Condition</th>
+      <th>ISBN番号</th>
+      <th>書籍名</th>
+      <th>著者名</th>
+      <th>状態</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,9 +20,9 @@
         <td><%= dealing.title %></td>
         <td><%= dealing.author_name %></td>
         <td><%= dealing.condition %></td>
-        <td><%= link_to 'Show', dealing %></td>
-        <td><%= link_to 'Edit', edit_dealing_path(dealing) %></td>
-        <td><%= link_to 'Destroy', dealing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '詳細', dealing %></td>
+        <td><%= link_to '編集', edit_dealing_path(dealing) %></td>
+        <td><%= link_to '削除', dealing, method: :delete, data: { confirm: 'ほんとにいいの？' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Dealing', new_dealing_path %>
+<%= link_to '新規作成', new_dealing_path %>

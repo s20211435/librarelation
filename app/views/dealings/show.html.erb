@@ -1,24 +1,24 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Isbn number:</strong>
+  <strong>ISBN番号</strong>
   <%= @dealing.isbn_number %>
 </p>
 
 <p>
-  <strong>Title:</strong>
+  <strong>書籍名</strong>
   <%= @dealing.title %>
 </p>
 
 <p>
-  <strong>Author name:</strong>
+  <strong>著者名</strong>
   <%= @dealing.author_name %>
 </p>
 
 <p>
-  <strong>Condition:</strong>
+  <strong>状態</strong>
   <%= @dealing.condition %>
 </p>
 
-<%= link_to 'Edit', edit_dealing_path(@dealing) %> |
-<%= link_to 'Back', dealings_path %>
+<%= link_to '編集', edit_dealing_path(@dealing) %> |
+<%= link_to '戻る', dealings_path %>

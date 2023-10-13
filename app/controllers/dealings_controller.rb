@@ -25,7 +25,7 @@ class DealingsController < ApplicationController
 
     respond_to do |format|
       if @dealing.save
-        format.html { redirect_to dealing_url(@dealing), notice: "Dealing was successfully created." }
+        format.html { redirect_to dealing_url(@dealing), notice: "作成できました" }
         format.json { render :show, status: :created, location: @dealing }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class DealingsController < ApplicationController
   def update
     respond_to do |format|
       if @dealing.update(dealing_params)
-        format.html { redirect_to dealing_url(@dealing), notice: "Dealing was successfully updated." }
+        format.html { redirect_to dealing_url(@dealing), notice: "編集できました" }
         format.json { render :show, status: :ok, location: @dealing }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class DealingsController < ApplicationController
     @dealing.destroy
 
     respond_to do |format|
-      format.html { redirect_to dealings_url, notice: "Dealing was successfully destroyed." }
+      format.html { redirect_to dealings_url, notice: "削除できました" }
       format.json { head :no_content }
     end
   end

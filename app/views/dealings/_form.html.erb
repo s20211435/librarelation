@@ -1,7 +1,7 @@
 <%= form_with(model: dealing) do |form| %>
   <% if dealing.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(dealing.errors.count, "error") %> prohibited this dealing from being saved:</h2>
+      <h2><%= pluralize(dealing.errors.count, "エラー") %> prohibited this dealing from being saved:</h2>
 
       <ul>
         <% dealing.errors.each do |error| %>
@@ -12,26 +12,26 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :isbn_number %>
+    <%= form.label "ISBN番号" %>
     <%= form.text_field :isbn_number %>
   </div>
 
   <div class="field">
-    <%= form.label :title %>
+    <%= form.label "書籍名" %>
     <%= form.text_field :title %>
   </div>
 
   <div class="field">
-    <%= form.label :author_name %>
+    <%= form.label "著者名" %>
     <%= form.text_field :author_name %>
   </div>
 
   <div class="field">
-    <%= form.label :condition %>
+    <%= form.label "状態" %>
     <%= form.number_field :condition %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "登録"%>
   </div>
 <% end %>

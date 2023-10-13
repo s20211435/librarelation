@@ -1,7 +1,7 @@
 <%= form_with(model: recommend_book) do |form| %>
   <% if recommend_book.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(recommend_book.errors.count, "error") %> prohibited this recommend_book from being saved:</h2>
+      <h2><%= pluralize(recommend_book.errors.count, "エラー") %> prohibited this recommend_book from being saved:</h2>
 
       <ul>
         <% recommend_book.errors.each do |error| %>
@@ -12,26 +12,26 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :ISBN_number %>
+    <%= form.label "ISBN番号" %>
     <%= form.text_field :ISBN_number %>
   </div>
 
   <div class="field">
-    <%= form.label :title %>
+    <%= form.label "書籍名" %>
     <%= form.text_field :title %>
   </div>
 
   <div class="field">
-    <%= form.label :author_name %>
+    <%= form.label "著者名" %>
     <%= form.text_field :author_name %>
   </div>
 
   <div class="field">
-    <%= form.label :recommend %>
+    <%= form.label "おすすめ理由" %>
     <%= form.text_field :recommend %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "登録"%>
   </div>
 <% end %>

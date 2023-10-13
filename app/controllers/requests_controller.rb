@@ -12,7 +12,9 @@ class RequestsController < ApplicationController
 
   # GET /requests/new
   def new
+    logger.debug("=====0====")
     @request = Request.new
+    logger.debug("=====1====")
   end
 
   # GET /requests/1/edit

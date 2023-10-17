@@ -1,5 +1,8 @@
 <h1>新刊紹介登録</h1>
 
+<%= @client.inspect %>
+<br><br><br>
+<%= @client.body %>
 <%= render 'form', new_book: @new_book %>
 
 <%= link_to '戻る', new_books_path %>

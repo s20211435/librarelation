@@ -12,6 +12,8 @@ class NewBooksController < ApplicationController
 
   # GET /new_books/new
   def new
+    @client = OpenBD::Client.new
+    @client = @client.bulk_get '9784309226712'
     @new_book = NewBook.new
   end
 

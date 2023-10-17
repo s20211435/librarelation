@@ -1,14 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Recommend Books</h1>
+<h1>おすすめ本</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Isbn number</th>
-      <th>Title</th>
-      <th>Author name</th>
-      <th>Recommend</th>
+      <th>ISBN番号</th>
+      <th>書籍名</th>
+      <th>著者名</th>
+      <th>おすすめ理由</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,9 +20,9 @@
         <td><%= recommend_book.title %></td>
         <td><%= recommend_book.author_name %></td>
         <td><%= recommend_book.recommend %></td>
-        <td><%= link_to 'Show', recommend_book %></td>
-        <td><%= link_to 'Edit', edit_recommend_book_path(recommend_book) %></td>
-        <td><%= button_to '削除', recommend_book, class: 'btn btn-outline-dark', method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
+        <td><%= link_to '詳細', recommend_book %></td>
+        <td><%= link_to '編集', edit_recommend_book_path(recommend_book) %></td>
+        <td><%= link_to '削除', recommend_book, method: :delete, data: { confirm: 'ほんとにいいの？' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Recommend Book', new_recommend_book_path %>
+<%= link_to '新規作成', new_recommend_book_path %>

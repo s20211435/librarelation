@@ -25,7 +25,7 @@ class RecommendBooksController < ApplicationController
 
     respond_to do |format|
       if @recommend_book.save
-        format.html { redirect_to recommend_book_url(@recommend_book), notice: "Recommend book was successfully created." }
+        format.html { redirect_to recommend_book_url(@recommend_book), notice: "作成できました" }
         format.json { render :show, status: :created, location: @recommend_book }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class RecommendBooksController < ApplicationController
   def update
     respond_to do |format|
       if @recommend_book.update(recommend_book_params)
-        format.html { redirect_to recommend_book_url(@recommend_book), notice: "Recommend book was successfully updated." }
+        format.html { redirect_to recommend_book_url(@recommend_book), notice: "編集できました" }
         format.json { render :show, status: :ok, location: @recommend_book }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class RecommendBooksController < ApplicationController
     @recommend_book.destroy
 
     respond_to do |format|
-      format.html { redirect_to recommend_books_url, notice: "Recommend book was successfully destroyed." }
+      format.html { redirect_to recommend_books_url, notice: "削除できました" }
       format.json { head :no_content }
     end
   end

@@ -25,7 +25,7 @@ class RankingsController < ApplicationController
 
     respond_to do |format|
       if @ranking.save
-        format.html { redirect_to ranking_url(@ranking), notice: "Ranking was successfully created." }
+        format.html { redirect_to ranking_url(@ranking), notice: "登録できました。" }
         format.json { render :show, status: :created, location: @ranking }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class RankingsController < ApplicationController
   def update
     respond_to do |format|
       if @ranking.update(ranking_params)
-        format.html { redirect_to ranking_url(@ranking), notice: "Ranking was successfully updated." }
+        format.html { redirect_to ranking_url(@ranking), notice: "編集できました。" }
         format.json { render :show, status: :ok, location: @ranking }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class RankingsController < ApplicationController
     @ranking.destroy
 
     respond_to do |format|
-      format.html { redirect_to rankings_url, notice: "Ranking was successfully destroyed." }
+      format.html { redirect_to rankings_url, notice: "削除できました。" }
       format.json { head :no_content }
     end
   end

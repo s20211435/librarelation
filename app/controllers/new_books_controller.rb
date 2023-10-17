@@ -52,7 +52,7 @@ class NewBooksController < ApplicationController
     @new_book.destroy
 
     respond_to do |format|
-      format.html { redirect_to new_books_url, notice: "New book was successfully destroyed." }
+      format.html { redirect_to new_books_url, notice: "削除できました。" }
       format.json { head :no_content }
     end
   end

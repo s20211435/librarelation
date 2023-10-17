@@ -27,7 +27,7 @@ class RequestsController < ApplicationController
 
     respond_to do |format|
       if @request.save
-        format.html { redirect_to request_url(@request), notice: "Request was successfully created." }
+        format.html { redirect_to request_url(@request), notice: "登録できました。" }
         format.json { render :show, status: :created, location: @request }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,7 +40,7 @@ class RequestsController < ApplicationController
   def update
     respond_to do |format|
       if @request.update(request_params)
-        format.html { redirect_to request_url(@request), notice: "Request was successfully updated." }
+        format.html { redirect_to request_url(@request), notice: "編集できました。" }
         format.json { render :show, status: :ok, location: @request }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -67,6 +67,6 @@ class RequestsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def request_params
-      params.require(:request).permit(:isbn_number, :title, :author_name, :reason, :grade, :class, :number, :name)
+      params.require(:request).permit(:isbn_number, :title, :author_name, :reason, :grade, :kumi, :number, :name)
     end
 end

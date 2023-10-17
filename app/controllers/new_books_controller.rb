@@ -25,7 +25,7 @@ class NewBooksController < ApplicationController
 
     respond_to do |format|
       if @new_book.save
-        format.html { redirect_to new_book_url(@new_book), notice: "New book was successfully created." }
+        format.html { redirect_to new_book_url(@new_book), notice: "登録できました。" }
         format.json { render :show, status: :created, location: @new_book }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class NewBooksController < ApplicationController
   def update
     respond_to do |format|
       if @new_book.update(new_book_params)
-        format.html { redirect_to new_book_url(@new_book), notice: "New book was successfully updated." }
+        format.html { redirect_to new_book_url(@new_book), notice: "編集できました。" }
         format.json { render :show, status: :ok, location: @new_book }
       else
         format.html { render :edit, status: :unprocessable_entity }

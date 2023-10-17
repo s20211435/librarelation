@@ -22,7 +22,7 @@
         <td><%= ranking.book_rank %></td>
         <td><%= link_to 'Show', ranking %></td>
         <td><%= link_to 'Edit', edit_ranking_path(ranking) %></td>
-        <td><%= link_to 'Destroy', ranking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to '削除', ranking, class: 'btn btn-outline-dark', method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
       </tr>
     <% end %>
   </tbody>

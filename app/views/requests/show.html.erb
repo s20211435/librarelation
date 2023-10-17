@@ -1,44 +1,44 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Isbn number:</strong>
+  <strong>ISBN番号</strong>
   <%= @request.isbn_number %>
 </p>
 
 <p>
-  <strong>Title:</strong>
+  <strong>書籍名</strong>
   <%= @request.title %>
 </p>
 
 <p>
-  <strong>Author name:</strong>
+  <strong>著者名</strong>
   <%= @request.author_name %>
 </p>
 
 <p>
-  <strong>Reason:</strong>
+  <strong>リクエスト理由</strong>
   <%= @request.reason %>
 </p>
 
 <p>
-  <strong>Grade:</strong>
+  <strong>学年</strong>
   <%= @request.grade %>
 </p>
 
 <p>
-  <strong>Class:</strong>
-  <%= @request.class %>
+  <strong>組</strong>
+  <%= @request.kumi %>
 </p>
 
 <p>
-  <strong>Number:</strong>
+  <strong>出席番号</strong>
   <%= @request.number %>
 </p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>名前</strong>
   <%= @request.name %>
 </p>
 
-<%= link_to 'Edit', edit_request_path(@request) %> |
-<%= link_to 'Back', requests_path %>
+<%= link_to '編集', edit_request_path(@request) %> |
+<%= link_to '戻る', requests_path %>

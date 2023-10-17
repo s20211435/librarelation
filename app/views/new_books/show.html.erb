@@ -1,39 +1,39 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Isbn number:</strong>
+  <strong>ISBN番号</strong>
   <%= @new_book.isbn_number %>
 </p>
 
 <p>
-  <strong>Title:</strong>
+  <strong>書籍名</strong>
   <%= @new_book.title %>
 </p>
 
 <p>
-  <strong>Author name:</strong>
+  <strong>著者名</strong>
   <%= @new_book.author_name %>
 </p>
 
 <p>
-  <strong>Arrival day:</strong>
+  <strong>入荷日</strong>
   <%= @new_book.arrival_day %>
 </p>
 
 <p>
-  <strong>Lending:</strong>
+  <strong>貸出</strong>
   <%= @new_book.lending %>
 </p>
 
 <p>
-  <strong>Book number:</strong>
+  <strong>冊数</strong>
   <%= @new_book.book_number %>
 </p>
 
 <p>
-  <strong>Genre:</strong>
+  <strong>ジャンル</strong>
   <%= @new_book.genre %>
 </p>
 
-<%= link_to 'Edit', edit_new_book_path(@new_book) %> |
-<%= link_to 'Back', new_books_path %>
+<%= link_to '編集', edit_new_book_path(@new_book) %> |
+<%= link_to '戻る', new_books_path %>

@@ -22,7 +22,7 @@
         <td><%= dealing.condition %></td>
         <td><%= link_to 'Show', dealing %></td>
         <td><%= link_to 'Edit', edit_dealing_path(dealing) %></td>
-        <td><%= link_to 'Destroy', dealing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to '削除', dealing, class: 'btn btn-outline-dark', method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
       </tr>
     <% end %>
   </tbody>

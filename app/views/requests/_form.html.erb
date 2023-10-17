@@ -12,46 +12,46 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :isbn_number %>
+    <%= form.label "ISBN番号" %>
     <%= form.text_field :isbn_number %>
   </div>
 
   <div class="field">
-    <%= form.label :title %>
+    <%= form.label "書籍名"%>
     <%= form.text_field :title %>
   </div>
 
   <div class="field">
-    <%= form.label :author_name %>
+    <%= form.label "著者名" %>
     <%= form.text_field :author_name %>
   </div>
 
   <div class="field">
-    <%= form.label :reason %>
+    <%= form.label "リクエスト理由" %>
     <%= form.text_field :reason %>
   </div>
 
   <div class="field">
-    <%= form.label :grade %>
+    <%= form.label "学年" %>
     <%= form.text_field :grade %>
   </div>
 
   <div class="field">
-    <%= form.label :class %>
-    <%= form.text_field :class %>
+    <%= form.label "組" %>
+    <%= form.text_field :kumi %>
   </div>
 
   <div class="field">
-    <%= form.label :number %>
+    <%= form.label "出席番号" %>
     <%= form.text_field :number %>
   </div>
 
   <div class="field">
-    <%= form.label :name %>
+    <%= form.label "名前" %>
     <%= form.text_field :name %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "登録" %>
   </div>
 <% end %>

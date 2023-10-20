@@ -2,7 +2,17 @@
 
 <%= @client.inspect %>
 <br><br><br>
-<%= @client.body %>
+
+<%= @client.body[0]["onix"]["RecordReference"]%>
+<br><br><br>
+
+<%= @client.body[0]["onix"]["DescriptiveDetail"]["TitleDetail"]["TitleElement"]["TitleText"]["content"] %>
+<br><br><br>
+
+<%= "#{@client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[0]}"+"#{@client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[1]}"%>
+<br><br><br>
+
+
 <%= render 'form', new_book: @new_book %>
 
 <%= link_to '戻る', new_books_path %>

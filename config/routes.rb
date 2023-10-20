@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  resources :requests
+  resources :requests do
+    collection do
+      get 'isbn_search'
+      post 'isbn_search_process'
+    end
+  end
   resources :dealings
   resources :recommend_books
   resources :new_books

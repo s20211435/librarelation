@@ -12,9 +12,10 @@ class RequestsController < ApplicationController
 
   # GET /requests/new
   def new
-    logger.debug("=====0====")
     @request = Request.new
-    logger.debug("=====1====")
+    @client = OpenBD::Client.new
+    @client = @client.bulk_get params["isbn"]["number"]
+    @request.isbn_number = @client.body[0]
   end
 
   # GET /requests/1/edit
@@ -59,6 +60,12 @@ class RequestsController < ApplicationController
     end
   end
 
+  def isbn_search
+
+  end
+
+  def isbn_search_process
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_request

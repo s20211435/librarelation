@@ -15,7 +15,9 @@ class RequestsController < ApplicationController
     @request = Request.new
     @client = OpenBD::Client.new
     @client = @client.bulk_get params["isbn"]["number"]
-    @request.isbn_number = @client.body[0]
+    @request.isbn_number = @client.body[0]["onix"]["RecordReference"]
+    @request.title = @client.body[0]["onix"]["DescriptiveDetail"]["TitleDetail"]["TitleElement"]["TitleText"]["content"]
+    @request.author_name = @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[0] + @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[1]
   end
 
   # GET /requests/1/edit

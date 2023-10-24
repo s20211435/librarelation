@@ -12,7 +12,9 @@ class NewBooksController < ApplicationController
 
   # GET /new_books/new
   def new
+
     @new_book = NewBook.new
+
     @client = OpenBD::Client.new
     @client = @client.bulk_get params["isbn"]["number"]
     @new_book.isbn_number = @client.body[0]["onix"]["RecordReference"]
@@ -60,6 +62,10 @@ class NewBooksController < ApplicationController
       format.html { redirect_to new_books_url, notice: "削除できました。" }
       format.json { head :no_content }
     end
+  end
+
+  def isbn_search
+
   end
 
   private

@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   end
   resources :dealings
   resources :recommend_books
-  resources :new_books
+  resources :new_books do
+    collection do
+      get 'isbn_search'
+    end
+  end
   resources :rankings
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

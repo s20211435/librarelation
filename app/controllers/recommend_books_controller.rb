@@ -15,7 +15,7 @@ class RecommendBooksController < ApplicationController
     @recommend_book = RecommendBook.new
     @client = OpenBD::Client.new
     @client = @client.bulk_get params["isbn"]["number"]
-    @recommend_book.isbn_number = @client.body[0]["onix"]["RecordReference"]
+    @recommend_book.ISBN_number = @client.body[0]["onix"]["RecordReference"]
     @recommend_book.title = @client.body[0]["onix"]["DescriptiveDetail"]["TitleDetail"]["TitleElement"]["TitleText"]["content"]
     @recommend_book.author_name = @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[0] + @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[1]
   end

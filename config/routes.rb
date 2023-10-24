@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       post 'isbn_search_process'
     end
   end
+
   resources :dealings
   resources :recommend_books do
     collection do
@@ -16,7 +17,12 @@ Rails.application.routes.draw do
       get 'isbn_search'
     end
   end
-  resources :rankings
+
+  resources :rankings do
+    collection do
+      get 'isbn_search'
+    end
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
 

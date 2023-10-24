@@ -6,7 +6,11 @@ Rails.application.routes.draw do
     end
   end
   resources :dealings
-  resources :recommend_books
+  resources :recommend_books do
+    collection do
+      get 'isbn_search'
+    end
+  end
   resources :new_books do
     collection do
       get 'isbn_search'

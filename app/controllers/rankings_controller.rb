@@ -13,6 +13,12 @@ class RankingsController < ApplicationController
   # GET /rankings/new
   def new
     @ranking = Ranking.new
+
+    @client = OpenBD::Client.new
+    @client = @client.bulk_get params["isbn"]["number"]
+    @ranking.isbn_number = @client.body[0]["onix"]["RecordReference"]
+    @ranking.title = @client.body[0]["onix"]["DescriptiveDetail"]["TitleDetail"]["TitleElement"]["TitleText"]["content"]
+    @ranking.author_name = @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[0] + @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[1]
   end
 
   # GET /rankings/1/edit
@@ -55,6 +61,10 @@ class RankingsController < ApplicationController
       format.html { redirect_to rankings_url, notice: "削除できました。" }
       format.json { head :no_content }
     end
+  end
+
+  def isbn_search
+
   end
 
   private

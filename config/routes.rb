@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'admin/top'
   resources :requests do
     collection do
       get 'isbn_search'

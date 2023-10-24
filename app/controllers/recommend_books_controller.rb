@@ -13,6 +13,11 @@ class RecommendBooksController < ApplicationController
   # GET /recommend_books/new
   def new
     @recommend_book = RecommendBook.new
+    @client = OpenBD::Client.new
+    @client = @client.bulk_get params["isbn"]["number"]
+    @recommend_book.ISBN_number = @client.body[0]["onix"]["RecordReference"]
+    @recommend_book.title = @client.body[0]["onix"]["DescriptiveDetail"]["TitleDetail"]["TitleElement"]["TitleText"]["content"]
+    @recommend_book.author_name = @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[0] + @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[1]
   end
 
   # GET /recommend_books/1/edit
@@ -56,6 +61,11 @@ class RecommendBooksController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def isbn_search
+
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

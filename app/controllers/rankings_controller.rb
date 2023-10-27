@@ -16,9 +16,18 @@ class RankingsController < ApplicationController
 
     @client = OpenBD::Client.new
     @client = @client.bulk_get params["isbn"]["number"]
-    @ranking.isbn_number = @client.body[0]["onix"]["RecordReference"]
-    @ranking.title = @client.body[0]["onix"]["DescriptiveDetail"]["TitleDetail"]["TitleElement"]["TitleText"]["content"]
-    @ranking.author_name = @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[0] + @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[1]
+    
+    if @client.body.include?(nil)
+      @error_txt = "見つかりませんでした。"
+      render isbn_search_rankings_path
+      return
+    end
+
+    # viewにエラーメッセージを表示する処理
+    client_body_onix = @client.body[0]["onix"]
+    @ranking.isbn_number = client_body_onix["RecordReference"]
+    @ranking.title = client_body_onix["DescriptiveDetail"]["TitleDetail"]["TitleElement"]["TitleText"]["content"]
+    @ranking.author_name = client_body_onix["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[0] + @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[1]
   end
 
   # GET /rankings/1/edit

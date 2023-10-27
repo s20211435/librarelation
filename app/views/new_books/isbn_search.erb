@@ -3,6 +3,13 @@
 <form action="/new_books/new" method="get" >
   <input type="text" name="isbn[number]">
   <input type="submit" />
+  <% if @judge == "out" %>
+    <br><br>
+    <%= @error_txt %>
+    <br><br>
+  <% end %>
 </form>
 
 <%= link_to '戻る', new_books_path %>
+
+

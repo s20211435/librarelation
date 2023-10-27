@@ -12,11 +12,18 @@ class NewBooksController < ApplicationController
 
   # GET /new_books/new
   def new
-
     @new_book = NewBook.new
 
     @client = OpenBD::Client.new
     @client = @client.bulk_get params["isbn"]["number"]
+
+    if @client.body.include?(nil)
+      @judge = "out"
+      @error_txt = "見つかりませんでした。"
+      render isbn_search_new_books_path
+      return
+    end
+
     @new_book.isbn_number = @client.body[0]["onix"]["RecordReference"]
     @new_book.title = @client.body[0]["onix"]["DescriptiveDetail"]["TitleDetail"]["TitleElement"]["TitleText"]["content"]
     @new_book.author_name = @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[0] + @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[1]

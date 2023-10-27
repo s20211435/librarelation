@@ -14,15 +14,21 @@
  *= require_self
  */
 
- button {
-    padding: 100px 50px;
-    background-color: orange;
-    border-radius: 10px;
-    font-size: 20px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
- }
+ @import "bootstrap";
 
- button:hover {
-    background-color: gray;
-    box-shadow: 2px 2px 2px black;
+//  button {
+//     padding: 100px 50px;
+//     background-color: orange;
+//     border-radius: 10px;
+//     font-size: 20px;
+//     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+//  }
+
+//  button:hover {
+//     background-color: gray;
+//     box-shadow: 2px 2px 2px black;
+//  }
+
+ table {
+    width: 100%;
  }

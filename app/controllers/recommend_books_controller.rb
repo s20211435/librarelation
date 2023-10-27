@@ -15,6 +15,13 @@ class RecommendBooksController < ApplicationController
     @recommend_book = RecommendBook.new
     @client = OpenBD::Client.new
     @client = @client.bulk_get params["isbn"]["number"]
+
+    if @client.body.include?(nil)
+      @error_txt = "見つかりませんでした。"
+      render isbn_search_recommend_books_path
+      return
+    end
+
     @recommend_book.ISBN_number = @client.body[0]["onix"]["RecordReference"]
     @recommend_book.title = @client.body[0]["onix"]["DescriptiveDetail"]["TitleDetail"]["TitleElement"]["TitleText"]["content"]
     @recommend_book.author_name = @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[0] + @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[1]

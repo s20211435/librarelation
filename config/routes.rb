@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'home/main_top'
   get 'admin/top'
   resources :requests do
     collection do

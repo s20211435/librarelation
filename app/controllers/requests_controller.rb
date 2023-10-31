@@ -17,6 +17,7 @@ class RequestsController < ApplicationController
     @client = @client.bulk_get params["isbn"]["number"]
 
     if @client.body.include?(nil)
+      @judge = "out"
       @error_txt = "見つかりませんでした。"
       render isbn_search_requests_path
       return

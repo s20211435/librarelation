@@ -2,7 +2,7 @@
 
 <h1>新刊紹介一覧</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>ISBN番号</th>
@@ -23,7 +23,13 @@
         <td><%= new_book.title %></td>
         <td><%= new_book.author_name %></td>
         <td><%= new_book.arrival_day %></td>
-        <td><%= new_book.lending %></td>
+        <td>
+          <% if new_book.lending == 0 %>
+            <%= "可" %>
+          <% elsif new_book.lending == 1 %>
+            <%= "不可" %>
+          <% end %>
+        </td>
         <td><%= new_book.book_number %></td>
         <td><%= new_book.genre %></td>
         <td><%= link_to '詳細', new_book %></td>

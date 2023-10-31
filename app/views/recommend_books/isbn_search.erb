@@ -1,5 +1,10 @@
 <h1>ISBN番号検索</h1>
 
+<% if @judge == "out" %>
+    <%= @error_txt %>
+    <br><br>
+<% end %>
+
 <form action="/recommend_books/new" method="get" >
   <input type="text" name="isbn[number]">
   <input type="submit" />

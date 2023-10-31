@@ -9,11 +9,25 @@
     <div class="col-12 col-sm-8 border">
         新刊紹介
         <div class="row border">
-             <div class="col">a</div>
+             <div class="col">
+                <% @random_new_books.each do |book| %>
+                <%= "ISBN番号 : " + book.isbn_number %><br>
+                <%= "タイトル : " + book.title %><br>
+                <%= "著者名 : " + book.author_name %><br>
+                <%= "入刊日 : " +  book.arrival_day.to_s %><br>
+                <% if book.lending == 0 %>
+                    <%= "貸出 可/不 : " + "可" %>
+                <% elsif book.lending == 1 %>
+                    <%= "貸出 可/不 : " + "不" %>
+                <% end %><br>
+                <%= "在館冊数 : " +  book.book_number.to_s %><br>
+                <%= "ジャンル : " +  book.genre %><br>
+                <% end %>
+             </div>
         </div>
         <div class="row border">
-            <button class="col text-center btn btn-info m-3">aaa</button>
-            <button class="col text-center btn btn-info m-3">aaa</button>
+            <button class="col text-center btn btn-info m-3">もっと見る</button>
+            <button class="col text-center btn btn-info m-3">リクエスト</button>
         </div>
         
         <div class="">
@@ -23,6 +37,10 @@
                 <div class="col">b</div>
                 <div class="col">c</div>
             </div>
+        </div>
+        <div class="row border">
+            <button class="col text-center btn btn-info m-3">設定</button>
+            <button class="col text-center btn btn-info m-3">処分本リスト</button>
         </div>
     </div>
 

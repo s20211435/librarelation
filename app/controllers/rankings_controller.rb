@@ -18,6 +18,7 @@ class RankingsController < ApplicationController
     @client = @client.bulk_get params["isbn"]["number"]
     
     if @client.body.include?(nil)
+      @judge = "out"
       @error_txt = "見つかりませんでした。"
       render isbn_search_rankings_path
       return

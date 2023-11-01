@@ -7,7 +7,11 @@ class HomeController < ApplicationController
     all_recommend_books = RecommendBook.all
     random_id_array = all_recommend_books.pluck(:id).shuffle[0]
     @random_recommend_books = all_recommend_books.where(id: random_id_array)
-    @recommend_books = all_recommend_books.
+    
+    all_rankings = Ranking.all
+    @first_rankings = Ranking.where(book_rank: '1')
+    @second_rankings = Ranking.where(book_rank: '2')
+    @third_rankings = Ranking.where(book_rank: '3')
   end
   
   

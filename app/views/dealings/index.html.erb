@@ -20,8 +20,8 @@
         <td><%= dealing.title %></td>
         <td><%= dealing.author_name %></td>
         <td><%= dealing.condition %></td>
-        <td><%= link_to '詳細', dealing %></td>
-        <td><%= link_to '編集', edit_dealing_path(dealing) %></td>
+        <td><%= button_to '詳細', dealing , {method: :get, class: 'btn btn-outline-dark'} %></td>
+        <td><%= button_to '編集', edit_dealing_path(dealing), {method: :get, class: 'btn btn-outline-dark'} %></td>
         <td><%= button_to '削除', dealing, class: 'btn btn-outline-dark', method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
       </tr>
     <% end %>

@@ -32,8 +32,8 @@
         </td>
         <td><%= new_book.book_number %></td>
         <td><%= new_book.genre %></td>
-        <td><%= link_to '詳細', new_book %></td>
-        <td><%= link_to '編集', edit_new_book_path(new_book) %></td>
+        <td><%= button_to '詳細', new_book , {method: :get, class: 'btn btn-outline-dark'} %></td>
+        <td><%= button_to '編集', edit_new_book_path(new_book), {method: :get, class: 'btn btn-outline-dark'} %></td>
         <td><%= button_to '削除', new_book, class: 'btn btn-outline-dark', method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
       </tr>
     <% end %>

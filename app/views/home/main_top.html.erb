@@ -33,9 +33,30 @@
         <div class="">
             図書館司書おすすめの本
             <div class="row border">
-                <div class="col">a</div>
-                <div class="col">b</div>
-                <div class="col">c</div>
+                <div class="col">
+                    <% @random_recommend_books.each do |recommend_book| %>
+                        <%= "ISBN番号 : " + recommend_book.ISBN_number %><br>
+                        <%= "タイトル : " + recommend_book.title %><br>
+                        <%= "著者名 : " + recommend_book.author_name %><br>
+                        <%= "おすすめ理由 : " + recommend_book.recommend %><br>
+                    <% end %>
+                </div>
+                <div class="col">
+                    <% @random_recommend_books.each do |recommend_book| %>
+                        <%= "ISBN番号 : " + recommend_book.ISBN_number %><br>
+                        <%= "タイトル : " + recommend_book.title %><br>
+                        <%= "著者名 : " + recommend_book.author_name %><br>
+                        <%= "おすすめ理由 : " + recommend_book.recommend %><br>
+                    <% end %>
+                </div>
+                <div class="col">
+                    <% @random_recommend_books.each do |recommend_book| %>
+                        <%= "ISBN番号 : " + recommend_book.ISBN_number %><br>
+                        <%= "タイトル : " + recommend_book.title %><br>
+                        <%= "著者名 : " + recommend_book.author_name %><br>
+                        <%= "おすすめ理由 : " + recommend_book.recommend %><br>
+                    <% end %>
+                </div>
             </div>
         </div>
         <div class="row border">

@@ -92,16 +92,22 @@
         <div>
             <% @first_rankings.each do |rankings| %>
                 <%= "書籍名 : " + rankings.title %><br>
+                <%= "著者名 : " + rankings.author_name %><br>
+                <%= "順位 : " + rankings.book_rank.to_s %><br>
             <% end %>
         </div>
         <div>
             <% @second_rankings.each do |rankings| %>
                 <%= "書籍名 : " + rankings.title %><br>
+                <%= "著者名 : " + rankings.author_name %><br>
+                <%= "順位 : " + rankings.book_rank.to_s %><br>
             <% end %>
         </div>
         <div>
             <% @third_rankings.each do |rankings| %>
                 <%= "書籍名 : " + rankings.title %><br>
+                <%= "著者名 : " + rankings.author_name %><br>
+                <%= "順位 : " + rankings.book_rank.to_s %><br>
             <% end %>
         </div>
     </div>

@@ -34,48 +34,27 @@
             図書館司書おすすめの本
             <div class="row border">
                 <div class="col">
-                    <% @random_new_books.each do |book| %>
-                    <%= "ISBN番号 : " + book.isbn_number %><br>
-                    <%= "タイトル : " + book.title %><br>
-                    <%= "著者名 : " + book.author_name %><br>
-                    <%= "入刊日 : " +  book.arrival_day.to_s %><br>
-                    <% if book.lending == 0 %>
-                        <%= "貸出 可/不 : " + "可" %>
-                    <% elsif book.lending == 1 %>
-                        <%= "貸出 可/不 : " + "不" %>
-                    <% end %><br>
-                    <%= "在館冊数 : " +  book.book_number.to_s %><br>
-                    <%= "ジャンル : " +  book.genre %><br>
+                    <% @random_recommend_books.each do |recommend_book| %>
+                        <%= "ISBN番号 : " + recommend_book.ISBN_number %><br>
+                        <%= "タイトル : " + recommend_book.title %><br>
+                        <%= "著者名 : " + recommend_book.author_name %><br>
+                        <%= "おすすめ理由 : " + recommend_book.recommend %><br>
                     <% end %>
                 </div>
                 <div class="col">
-                    <% @random_new_books.each do |book| %>
-                    <%= "ISBN番号 : " + book.isbn_number %><br>
-                    <%= "タイトル : " + book.title %><br>
-                    <%= "著者名 : " + book.author_name %><br>
-                    <%= "入刊日 : " +  book.arrival_day.to_s %><br>
-                    <% if book.lending == 0 %>
-                        <%= "貸出 可/不 : " + "可" %>
-                    <% elsif book.lending == 1 %>
-                        <%= "貸出 可/不 : " + "不" %>
-                    <% end %><br>
-                    <%= "在館冊数 : " +  book.book_number.to_s %><br>
-                    <%= "ジャンル : " +  book.genre %><br>
+                    <% @random_recommend_books.each do |recommend_book| %>
+                        <%= "ISBN番号 : " + recommend_book.ISBN_number %><br>
+                        <%= "タイトル : " + recommend_book.title %><br>
+                        <%= "著者名 : " + recommend_book.author_name %><br>
+                        <%= "おすすめ理由 : " + recommend_book.recommend %><br>
                     <% end %>
                 </div>
                 <div class="col">
-                    <% @random_new_books.each do |book| %>
-                    <%= "ISBN番号 : " + book.isbn_number %><br>
-                    <%= "タイトル : " + book.title %><br>
-                    <%= "著者名 : " + book.author_name %><br>
-                    <%= "入刊日 : " +  book.arrival_day.to_s %><br>
-                    <% if book.lending == 0 %>
-                        <%= "貸出 可/不 : " + "可" %>
-                    <% elsif book.lending == 1 %>
-                        <%= "貸出 可/不 : " + "不" %>
-                    <% end %><br>
-                    <%= "在館冊数 : " +  book.book_number.to_s %><br>
-                    <%= "ジャンル : " +  book.genre %><br>
+                    <% @random_recommend_books.each do |recommend_book| %>
+                        <%= "ISBN番号 : " + recommend_book.ISBN_number %><br>
+                        <%= "タイトル : " + recommend_book.title %><br>
+                        <%= "著者名 : " + recommend_book.author_name %><br>
+                        <%= "おすすめ理由 : " + recommend_book.recommend %><br>
                     <% end %>
                 </div>
             </div>

@@ -20,8 +20,8 @@
         <td><%= ranking.title %></td>
         <td><%= ranking.author_name %></td>
         <td><%= ranking.book_rank %></td>
-        <td><%= link_to '詳細', ranking %></td>
-        <td><%= link_to '編集', edit_ranking_path(ranking) %></td>
+        <td><%= button_to '詳細', ranking, {method: :get, class: 'btn btn-outline-dark'} %></td>
+        <td><%= button_to '編集', edit_ranking_path(ranking), {method: :get, class: 'btn btn-outline-dark'} %></td>
         <td><%= button_to '削除', ranking, class: 'btn btn-outline-dark', method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
       </tr>
     <% end %>

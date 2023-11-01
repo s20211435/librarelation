@@ -33,30 +33,14 @@
         <div class="">
             図書館司書おすすめの本
             <div class="row border">
-                <div class="col">
-                    <% @random_recommend_books.each do |recommend_book| %>
+                <% @all_recommend_books.each do |recommend_book| %>
+                    <div class="col">
                         <%= "ISBN番号 : " + recommend_book.ISBN_number %><br>
                         <%= "タイトル : " + recommend_book.title %><br>
                         <%= "著者名 : " + recommend_book.author_name %><br>
                         <%= "おすすめ理由 : " + recommend_book.recommend %><br>
-                    <% end %>
-                </div>
-                <div class="col">
-                    <% @random_recommend_books.each do |recommend_book| %>
-                        <%= "ISBN番号 : " + recommend_book.ISBN_number %><br>
-                        <%= "タイトル : " + recommend_book.title %><br>
-                        <%= "著者名 : " + recommend_book.author_name %><br>
-                        <%= "おすすめ理由 : " + recommend_book.recommend %><br>
-                    <% end %>
-                </div>
-                <div class="col">
-                    <% @random_recommend_books.each do |recommend_book| %>
-                        <%= "ISBN番号 : " + recommend_book.ISBN_number %><br>
-                        <%= "タイトル : " + recommend_book.title %><br>
-                        <%= "著者名 : " + recommend_book.author_name %><br>
-                        <%= "おすすめ理由 : " + recommend_book.recommend %><br>
-                    <% end %>
-                </div>
+                    </div>
+                <% end %>
             </div>
         </div>
         <div class="row border">
@@ -69,19 +53,13 @@
         月間ランキング
         <div class="border"></div>
         <div>
-            <% @first_rankings.each do |rankings| %>
-                <%= "書籍名 : " + rankings.title %><br>
-            <% end %>
+            <%= "書籍名 : " + @first_rankings.title %><br>
         </div>
         <div>
-            <% @second_rankings.each do |rankings| %>
-                <%= "書籍名 : " + rankings.title %><br>
-            <% end %>
+            <%= "書籍名 : " + @second_rankings.title %><br>
         </div>
         <div>
-            <% @third_rankings.each do |rankings| %>
-                <%= "書籍名 : " + rankings.title %><br>
-            <% end %>
+            <%= "書籍名 : " + @third_rankings.title %><br>
         </div>
     </div>
 </div>

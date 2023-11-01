@@ -1,17 +1,5 @@
 <h1>新刊紹介登録</h1>
 
-<%= @client.inspect %>
-<br><br><br>
-
-<%= @client.body[0]["onix"]["RecordReference"]%>
-<br><br><br>
-
-<%= @client.body[0]["onix"]["DescriptiveDetail"]["TitleDetail"]["TitleElement"]["TitleText"]["content"] %>
-<br><br><br>
-
-<%= "#{@client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[0]}"+"#{@client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[1]}"%>
-<br><br><br>
-
 
 <%= render 'form', new_book: @new_book %>
 

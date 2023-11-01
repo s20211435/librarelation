@@ -47,9 +47,21 @@
     <div class="col-12 col-sm-4 border">
         月間ランキング
         <div class="border"></div>
-        <div>a</div>
-        <div>b</div>
-        <div>c</div>
+        <div>
+            <% @first_rankings.each do |rankings| %>
+                <%= "書籍名 : " + rankings.title %><br>
+            <% end %>
+        </div>
+        <div>
+            <% @second_rankings.each do |rankings| %>
+                <%= "書籍名 : " + rankings.title %><br>
+            <% end %>
+        </div>
+        <div>
+            <% @third_rankings.each do |rankings| %>
+                <%= "書籍名 : " + rankings.title %><br>
+            <% end %>
+        </div>
     </div>
 </div>
 

@@ -28,8 +28,8 @@
         <td><%= request.kumi %></td>
         <td><%= request.number %></td>
         <td><%= request.name %></td>
-        <td><%= link_to '詳細', request %></td>
-        <td><%= link_to '編集', edit_request_path(request) %></td>
+        <td><%= button_to '詳細', request, {method: :get, class: 'btn btn-outline-dark'} %></td>
+        <td><%= button_to '編集', edit_request_path(request), {method: :get, class: 'btn btn-outline-dark'} %></td>
         <td><%= button_to '削除', request, class: 'btn btn-outline-dark', method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
       </tr>
     <% end %>

@@ -7,31 +7,49 @@
 
 <div class="row p-5 ">
     <div class="col-12 col-sm-8 border">
-        新刊紹介
+        <div class= "text-center h3">新刊紹介</div>
         <div class="row border">
              <div class="col">
-                <% @random_new_books.each do |new_book| %>
-                <%= "ISBN番号 : " + new_book.isbn_number %><br>
-                <%= "タイトル : " + new_book.title %><br>
-                <%= "著者名 : " + new_book.author_name %><br>
-                <%= "入刊日 : " +  new_book.arrival_day.to_s %><br>
-                <% if new_book.lending == 0 %>
-                    <%= "貸出 可/不 : " + "可" %>
-                <% elsif new_book.lending == 1 %>
-                    <%= "貸出 可/不 : " + "不" %>
-                <% end %><br>
-                <%= "在館冊数 : " +  new_book.book_number.to_s %><br>
-                <%= "ジャンル : " +  new_book.genre %><br>
-                <% end %>
+                <table class="tag">
+                    <div class="">
+                        <div>
+                             <%  @random_new_books.each do |new_book| %>
+                                <tr>
+                                    <% if new_book.bookcover.present? %>
+                                        <td><%= image_tag new_book.bookcover, :width => '200' %></td>
+                                    <% else %>
+                                        <td></td>
+                                    <% end %>
+                                </tr>
+                            <% end %>
+                        </div>
+                        <div class="">
+                            <% @random_new_books.each do |new_book| %>
+                            
+                            <tr><th style="text-align: right;"><span>ISBN番号 :</span></th><td><%=new_book.isbn_number %></td></tr>
+                            <tr><th><span>タイトル :</span></th><td><%=new_book.title %></td></tr>
+                            <tr><th>著者名 :</th><td><%= new_book.author_name %></td></tr>
+                            <tr><th>入刊日 :</th><td><%= new_book.arrival_day.to_s %></td></tr>
+                            <% if new_book.lending == 0 %>
+                                <tr><th>貸出 可/不 :</th><td><span class="text-primary">可</span></td></tr>
+                            <% elsif new_book.lending == 1 %>
+                                <tr><th>貸出 可/不 :</th><td><span class="text-danger">不</span></td></tr>
+                            <% end %><br>
+                            <tr><th>在館冊数 :</th><td><%= new_book.book_number.to_s %></td></tr>
+                            <tr><th>ジャンル :</th><td><%=new_book.genre %></td></tr>
+                            <% end %>
+                        </div>
+                    </div>
+                </table>
              </div>
         </div>
         <div class="row border">
             <button class="col text-center btn btn-info m-3">もっと見る</button>
-            <button class="col text-center btn btn-info m-3">リクエスト</button>
+            <button class="col text-center btn btn-info m-3"><a href="/requests/isbn_search">リクエスト</a></button>
         </div>
         
         <div class="">
-            図書館司書おすすめの本
+            <div class= " text-center h3">図書館司書おすすめの本</div>
             <div class="row border">
                 <% @all_recommend_books.each do |recommend_book| %>
                     <div class="col">
@@ -49,20 +67,20 @@
         </div>
     </div>
 
-    <div class="col-12 col-sm-4 border">
-        月間ランキング
+    <div class="col-12 col-sm-4 border d-flex flex-column bd-highlight mb-3">
+        <div class="text-center h3">月間ランキング</div>
         <div class="border"></div>
-        <div>
+        <div class="p-2 bd-highlight">
             <%= "書籍名 : " + @first_rankings.title %><br>
             <%= "著者名 : " + @first_rankings.author_name %><br>
             <%= "ランキング : " + @first_rankings.book_rank.to_s %><br>
         </div>
-        <div>
+        <div class="p-2 bd-highlight">
             <%= "書籍名 : " + @second_rankings.title %><br>
             <%= "著者名 : " + @second_rankings.author_name %><br>
             <%= "ランキング : " + @second_rankings.book_rank.to_s %><br>
         </div>
-        <div>
+        <div class="p-2 bd-highlight">
             <%= "書籍名 : " + @third_rankings.title %><br>
             <%= "著者名 : " + @third_rankings.author_name %><br>
             <%= "ランキング : " + @third_rankings.book_rank.to_s %><br>

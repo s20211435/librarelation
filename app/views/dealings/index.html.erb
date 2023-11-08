@@ -19,7 +19,17 @@
         <td><%= dealing.isbn_number %></td>
         <td><%= dealing.title %></td>
         <td><%= dealing.author_name %></td>
-        <td><%= dealing.condition %></td>
+        <td>
+            <% if dealing.condition == 0 %>
+                      <div class="col"><%= "状態 : " + "よい" %></div>
+            <% elsif dealing.condition == 1 %>
+                      <div class="col"><%= "状態 : " + "わるい" %></div>
+            <% elsif dealing.condition == 2%>
+                      <div class="col"><%= "状態 : " + "すごくわるい" %></div>
+            <% else %>
+                      <div class="col"><%= "状態 : " + "不明" %></div>
+            <% end %>
+        </td>
         <td><%= button_to '詳細', dealing , {method: :get, class: 'btn btn-outline-dark'} %></td>
         <td><%= button_to '編集', edit_dealing_path(dealing), {method: :get, class: 'btn btn-outline-dark'} %></td>
         <td><%= button_to '削除', dealing, class: 'btn btn-outline-dark', method: :delete, data: { confirm: '本当に削除しますか？' } %></td>

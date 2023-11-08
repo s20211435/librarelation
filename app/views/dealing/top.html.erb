@@ -1,0 +1,18 @@
+<h1>処分本リスト</h1>
+<% @all_dealings.each do |dealings| %>
+    <div class="row border">
+                <div class="col"><%= "タイトル : " +  dealings.title %></div>
+                <div class="col"><%= "著者名 : " +  dealings.author_name %></div>
+                <% if dealings.condition == 0 %>
+                    <div class="col"><%= "状態 : " + "よい" %></div>
+                <% elsif dealings.condition == 1 %>
+                    <div class="col"><%= "状態 : " + "わるい" %></div>
+                <% elsif dealings.condition == 2%>
+                    <div class="col"><%= "状態 : " + "すごくわるい" %></div>
+                <% else %>
+                    <div class="col"><%= "状態 : " + "不明" %></div>
+                <% end %>
+                </div>
+        </div>
+    </div>
+<% end %>

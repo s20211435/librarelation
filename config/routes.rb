@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'dealing/top'
   get 'home/main_top'
   get 'admin/top'
   resources :requests do

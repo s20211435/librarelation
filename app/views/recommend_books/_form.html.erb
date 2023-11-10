@@ -31,6 +31,16 @@
     <%= form.text_field :recommend %>
   </div>
 
+  <div class="field">
+    <%= form.label "書籍表紙" %>
+    <%= form.file_field :bookcover %>
+  </div>
+
+  <div class="field">
+    <%= form.label "ID" %>
+    <%= form.number_field :id_coppy %>
+  </div>
+
   <div class="actions">
     <%= form.submit "登録"%>
   </div>

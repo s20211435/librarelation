@@ -11,34 +11,31 @@
         <div class="row border">
              <div class="col">
                 <table class="tag">
-                    <div class="">
-                        <div>
-                             <%  @random_new_books.each do |new_book| %>
+                    <div class="d-flex flex-row mb-3">
+                            <div>
                                 <tr>
-                                    <% if new_book.bookcover.present? %>
-                                        <td><%= image_tag new_book.bookcover, :width => '200' %></td>
-                                    <% else %>
-                                        <td></td>
+                                    <%  @random_new_books.each do |new_book| %>
+                                        <% if new_book.bookcover.present? %>
+                                            <td rowspan="7"><%= image_tag new_book.bookcover, :width => '200' %></td>
+                                        <% else %>
+                                            <td rowspan="7"></td>
+                                        <% end %>
                                     <% end %>
-                                </tr>
-                            <% end %>
-                        </div>
-                        <div class="">
-                            <% @random_new_books.each do |new_book| %>
-                            
-                            <tr><th style="text-align: right;"><span>ISBN番号 :</span></th><td><%=new_book.isbn_number %></td></tr>
-                            <tr><th><span>タイトル :</span></th><td><%=new_book.title %></td></tr>
-                            <tr><th>著者名 :</th><td><%= new_book.author_name %></td></tr>
-                            <tr><th>入刊日 :</th><td><%= new_book.arrival_day.to_s %></td></tr>
-                            <% if new_book.lending == 0 %>
-                                <tr><th>貸出 可/不 :</th><td><span class="text-primary">可</span></td></tr>
-                            <% elsif new_book.lending == 1 %>
-                                <tr><th>貸出 可/不 :</th><td><span class="text-danger">不</span></td></tr>
-                            <% end %><br>
-                            <tr><th>在館冊数 :</th><td><%= new_book.book_number.to_s %></td></tr>
-                            <tr><th>ジャンル :</th><td><%=new_book.genre %></td></tr>
-                            <% end %>
-                        </div>
+                                    <%  @random_new_books.each do |new_book| %>
+                                        <th style="text-align: right;"><span>ISBN番号 :</span></th><td><%=new_book.isbn_number %></td>
+                                        </tr>
+                                        <tr><th><span>タイトル :</span></th><td><%=new_book.title %></td></tr>
+                                        <tr><th>著者名 :</th><td><%= new_book.author_name %></td></tr>
+                                        <tr><th>入刊日 :</th><td><%= new_book.arrival_day.to_s %></td></tr>
+                                        <% if new_book.lending == 0 %>
+                                            <tr><th>貸出 可/不 :</th><td><span class="text-primary">可</span></td></tr>
+                                        <% elsif new_book.lending == 1 %>
+                                            <tr><th>貸出 可/不 :</th><td><span class="text-danger">不</span></td></tr>
+                                        <% end %><br>
+                                        <tr><th>在館冊数 :</th><td><%= new_book.book_number.to_s %></td></tr>
+                                        <tr><th>ジャンル :</th><td><%=new_book.genre %></td></tr>
+                                    <% end %>
+                            </div>
                     </div>
                 </table>
              </div>
@@ -50,17 +47,38 @@
         
         <div class="">
             <div class= " text-center h3">図書館司書おすすめの本</div>
-            <div class="row border">
-                <% @all_recommend_books.each do |recommend_book| %>
-                    <div class="col">
-                        <%= "ISBN番号 : " + recommend_book.ISBN_number %><br>
-                        <%= "タイトル : " + recommend_book.title %><br>
-                        <%= "著者名 : " + recommend_book.author_name %><br>
-                        <%= "おすすめ理由 : " + recommend_book.recommend %><br>
+                <div class="row border">
+                    <div class="row">
+                        <div class="col p-3">
+                            <% if @first_recommend_book.bookcover.present? %>
+                                    <td><%= image_tag @first_recommend_book.bookcover, :width => '200' %></td><br>
+                            <% end %>
+                            <%= "ISBN番号 : " + @first_recommend_book.ISBN_number %><br>
+                            <%= "タイトル : " + @first_recommend_book.title %><br>
+                            <%= "著者名 : " + @first_recommend_book.author_name %><br>
+                            <%= "おすすめ理由 : " + @first_recommend_book.recommend %><br>
+                        </div>
+                        <div class="col p-3">
+                            <% if @second_recommend_book.bookcover.present? %>
+                                    <td><%= image_tag @second_recommend_book.bookcover, :width => '200' %></td><br>
+                            <% end %>
+                            <%= "ISBN番号 : " + @second_recommend_book.ISBN_number %><br>
+                            <%= "タイトル : " + @second_recommend_book.title %><br>
+                            <%= "著者名 : " + @second_recommend_book.author_name %><br>
+                            <%= "おすすめ理由 : " + @second_recommend_book.recommend %><br>
+                        </div>
+                        <div class="col p-3">
+                            <% if @third_recommend_book.bookcover.present? %>
+                                    <td><%= image_tag @third_recommend_book.bookcover, :width => '200' %></td><br>
+                            <% end %>
+                            <%= "ISBN番号 : " + @third_recommend_book.ISBN_number %><br>
+                            <%= "タイトル : " + @third_recommend_book.title %><br>
+                            <%= "著者名 : " + @third_recommend_book.author_name %><br>
+                            <%= "おすすめ理由 : " + @third_recommend_book.recommend %><br>
+                        </div>
                     </div>
-                <% end %>
+                </div>
             </div>
-        </div>
         <div class="row border">
             <button class="col text-center btn btn-info m-3">設定</button>
             <button class="col text-center btn btn-info m-3">処分本リスト</button>

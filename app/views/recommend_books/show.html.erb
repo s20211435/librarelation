@@ -20,5 +20,10 @@
   <%= @recommend_book.recommend %>
 </p>
 
+<p>
+  <strong>IDコピー</strong>
+  <%= @recommend_book.id_coppy %>
+</p>
+
 <%= link_to '編集', edit_recommend_book_path(@recommend_book) %> |
 <%= link_to '戻る', recommend_books_path %>

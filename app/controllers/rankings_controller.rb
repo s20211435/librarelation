@@ -39,15 +39,31 @@ class RankingsController < ApplicationController
   def create
     @ranking = Ranking.new(ranking_params)
 
-    respond_to do |format|
-      if @ranking.save
-        format.html { redirect_to ranking_url(@ranking), notice: "登録できました。" }
-        format.json { render :show, status: :created, location: @ranking }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @ranking.errors, status: :unprocessable_entity }
+      if ranking_params[:bookcover].present?
+        @ranking.bookcover = "#{DateTime.now.strftime('%Y%m%d%H%M%S')}-#{ranking_params[:bookcover].original_filename}" 
+        save_path = Rails.root.join("app/assets/images/", @ranking.bookcover)
+
+        File.open(save_path, "w+b") do |f|
+          f.write ranking_params[:bookcover].read
+        end
       end
-    end
+      
+      if @ranking.save #セーブができたかできなかったか
+        redirect_to ranking_url(@ranking), notice: "保存成功"
+        #redirect_to books_path
+      else
+        render :new
+      end
+
+      # respond_to do |format|
+      #   if @ranking.save
+      #     format.html { redirect_to ranking_url(@ranking), notice: "登録できました。" }
+      #     format.json { render :show, status: :created, location: @ranking }
+      #   else
+      #     format.html { render :new, status: :unprocessable_entity }
+      #     format.json { render json: @ranking.errors, status: :unprocessable_entity }
+      #   end
+      # end
   end
 
   # PATCH/PUT /rankings/1 or /rankings/1.json
@@ -85,6 +101,6 @@ class RankingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ranking_params
-      params.require(:ranking).permit(:isbn_number, :title, :author_name, :book_rank)
+      params.require(:ranking).permit(:isbn_number, :title, :author_name, :book_rank, :bookcover)
     end
 end

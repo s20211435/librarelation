@@ -10,7 +10,6 @@ class HomeController < ApplicationController
     
     @all_recommend_books = RecommendBook.all
 
-    all_rankings = Ranking.all
     @first_rankings = Ranking.find_by(book_rank: '1')
     @second_rankings = Ranking.find_by(book_rank: '2')
     @third_rankings = Ranking.find_by(book_rank: '3')

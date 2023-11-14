@@ -52,6 +52,8 @@
                         <div class="col p-3">
                             <% if @first_recommend_book.bookcover.present? %>
                                     <td><%= image_tag @first_recommend_book.bookcover, :width => '200' %></td><br>
+                            <% else %>
+                                    <td></td>
                             <% end %>
                             <%= "ISBN番号 : " + @first_recommend_book.ISBN_number %><br>
                             <%= "タイトル : " + @first_recommend_book.title %><br>
@@ -61,6 +63,8 @@
                         <div class="col p-3">
                             <% if @second_recommend_book.bookcover.present? %>
                                     <td><%= image_tag @second_recommend_book.bookcover, :width => '200' %></td><br>
+                            <% else %>
+                                    <td></td>
                             <% end %>
                             <%= "ISBN番号 : " + @second_recommend_book.ISBN_number %><br>
                             <%= "タイトル : " + @second_recommend_book.title %><br>
@@ -70,6 +74,8 @@
                         <div class="col p-3">
                             <% if @third_recommend_book.bookcover.present? %>
                                     <td><%= image_tag @third_recommend_book.bookcover, :width => '200' %></td><br>
+                            <% else %>
+                                    <td></td>
                             <% end %>
                             <%= "ISBN番号 : " + @third_recommend_book.ISBN_number %><br>
                             <%= "タイトル : " + @third_recommend_book.title %><br>
@@ -95,6 +101,8 @@
                         <tr>
                             <% if @first_rankings.bookcover.present? %>
                                 <td rowspan="4"><%= image_tag @first_rankings.bookcover, :width => '200' %></td>
+                            <% else %>
+                                    <td></td>
                             <% end %>
                             <br>
                         
@@ -117,6 +125,8 @@
         <div class="p-2 bd-highlight">
             <% if @second_rankings.bookcover.present? %>
                 <td rowspan="4"><%= image_tag @second_rankings.bookcover, :width => '200' %></td>
+            <% else %>
+                <td></td>
             <% end %>
             <br>
             <%= "ISBN番号 : " + @second_rankings.isbn_number %><br>
@@ -128,6 +138,8 @@
         <div class="p-2 bd-highlight">
             <% if @third_rankings.bookcover.present? %>
                 <td rowspan="4"><%= image_tag @third_rankings.bookcover, :width => '200' %></td>
+            <% else %>
+                <td></td>
             <% end %>
             <br>
             <%= "ISBN番号 : " + @third_rankings.isbn_number %><br>

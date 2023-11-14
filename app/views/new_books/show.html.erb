@@ -35,5 +35,11 @@
   <%= @new_book.genre %>
 </p>
 
+<p>
+  <strong>ブックカバー</strong>
+  <%= @new_book.bookcover %>
+</p>
+
+
 <%= link_to '編集', edit_new_book_path(@new_book) %> |
 <%= link_to '戻る', new_books_path %>

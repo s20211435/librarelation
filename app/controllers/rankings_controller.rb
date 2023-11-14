@@ -68,14 +68,19 @@ class RankingsController < ApplicationController
 
   # PATCH/PUT /rankings/1 or /rankings/1.json
   def update
-    respond_to do |format|
-      if @ranking.update(ranking_params)
-        format.html { redirect_to ranking_url(@ranking), notice: "編集できました。" }
-        format.json { render :show, status: :ok, location: @ranking }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @ranking.errors, status: :unprocessable_entity }
+    if ranking_params[:bookcover].present?
+      @ranking.bookcover = "#{DateTime.now.strftime('%Y%m%d%H%M%S')}-#{ranking_params[:bookcover].original_filename}" 
+      save_path = Rails.root.join("app/assets/images/", @ranking.bookcover)
+
+      File.open(save_path, "w+b") do |f|
+        f.write ranking_params[:bookcover].read
       end
+    end
+
+    if @ranking.update(ranking_params_except_bookcover)
+      redirect_to rankings_path
+    else
+      render :edit
     end
   end
 
@@ -102,5 +107,9 @@ class RankingsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def ranking_params
       params.require(:ranking).permit(:isbn_number, :title, :author_name, :book_rank, :bookcover)
+    end
+
+    def ranking_params_except_bookcover
+      params.require(:ranking).permit(:isbn_number, :title, :author_name, :book_rank)
     end
 end

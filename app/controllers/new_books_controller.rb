@@ -66,14 +66,19 @@ class NewBooksController < ApplicationController
 
   # PATCH/PUT /new_books/1 or /new_books/1.json
   def update
-    respond_to do |format|
-      if @new_book.update(new_book_params)
-        format.html { redirect_to new_book_url(@new_book), notice: "編集できました。" }
-        format.json { render :show, status: :ok, location: @new_book }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @new_book.errors, status: :unprocessable_entity }
+    if new_book_params[:bookcover].present?
+      @new_book.bookcover = "#{DateTime.now.strftime('%Y%m%d%H%M%S')}-#{new_book_params[:bookcover].original_filename}" 
+      save_path = Rails.root.join("app/assets/images/", @new_book.bookcover)
+
+      File.open(save_path, "w+b") do |f|
+        f.write new_book_params[:bookcover].read
       end
+    end
+
+    if @new_book.update(new_book_params_except_bookcover)
+      redirect_to new_books_path
+    else
+      render :edit
     end
   end
 
@@ -104,5 +109,9 @@ class NewBooksController < ApplicationController
     # Only allow a list of trusted parameters through.
     def new_book_params
       params.require(:new_book).permit(:isbn_number, :title, :author_name, :arrival_day, :lending, :book_number, :genre, :bookcover)
+    end
+
+    def new_book_params_except_bookcover
+      params.require(:new_book).permit(:isbn_number, :title, :author_name, :arrival_day, :lending, :book_number, :genre)
     end
 end

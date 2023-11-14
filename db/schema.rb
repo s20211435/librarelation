@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2023_11_10_053304) do
     t.integer "book_rank"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "bookcover"
   end
 
   create_table "recommend_books", force: :cascade do |t|

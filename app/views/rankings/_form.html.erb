@@ -31,6 +31,11 @@
     <%= form.number_field :book_rank %>
   </div>
   
+   <div class="field">
+    <%= form.label "書籍表紙" %>
+    <%= form.file_field :bookcover %>
+  </div>
+  
   <div class="actions">
     <%= form.submit "登録" %>
   </div>

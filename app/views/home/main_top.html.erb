@@ -89,12 +89,9 @@
         <div class="border"></div>
         <div class="p-2 bd-highlight">
          <div class="text-center h3">月間ランキング</div>
-
             <% if @first_rankings.bookcover.present? %>
-                <td><%= image_tag @first_rankings.bookcover, :width => '200' %></td>
+                <td><%= image_tag @first_rankings.bookcover, :width => '200' %></td><br>
             <% end %>
-            <br>
-
             <%= "ISBN番号 : " + @first_rankings.isbn_number %><br>
             <%= "書籍名 : " + @first_rankings.title %><br>
             <%= "著者名 : " + @first_rankings.author_name %><br>

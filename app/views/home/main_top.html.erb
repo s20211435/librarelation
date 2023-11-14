@@ -113,7 +113,7 @@
                         <div class="p-2 bd-highlight">
                             <table class="tag">
                                 <tr>
-                                    <% if @first_rankings.bookcover.present? %>
+                                    <% if @second_rankings.bookcover.present? %>
                                         <td rowspan="4"><%= image_tag @second_rankings.bookcover, :width => '200' %></td>
                                     <% end %>
                                     <br>
@@ -134,7 +134,7 @@
                         <div class="p-2 bd-highlight">
                             <table class="tag">
                                 <tr>
-                                    <% if @first_rankings.bookcover.present? %>
+                                    <% if @third_rankings.bookcover.present? %>
                                         <td rowspan="4"><%= image_tag @third_rankings.bookcover, :width => '200' %></td>
                                     <% end %>
                                     <br>

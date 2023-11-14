@@ -11,19 +11,19 @@
         <div class="row border">
              <div class="col">
                 <table class="tag">
-                    <div class="">
+                    <div class="col">
                         <div>
                              <%  @random_new_books.each do |new_book| %>
-                                <tr>
+                                
                                     <% if new_book.bookcover.present? %>
                                         <td><%= image_tag new_book.bookcover, :width => '200' %></td>
                                     <% else %>
                                         <td></td>
                                     <% end %>
-                                </tr>
+                                
                             <% end %>
                         </div>
-                        <div class="">
+                        <div class="col">
                             <% @random_new_books.each do |new_book| %>
                             
                             <tr><th style="text-align: right;"><span>ISBN番号 :</span></th><td><%=new_book.isbn_number %></td></tr>

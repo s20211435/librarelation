@@ -36,27 +36,48 @@ class RecommendBooksController < ApplicationController
   def create
     @recommend_book = RecommendBook.new(recommend_book_params)
 
-    respond_to do |format|
-      if @recommend_book.save
-        format.html { redirect_to recommend_book_url(@recommend_book), notice: "作成できました" }
-        format.json { render :show, status: :created, location: @recommend_book }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @recommend_book.errors, status: :unprocessable_entity }
+    if recommend_book_params[:bookcover].present?
+      @recommend_book.bookcover = "#{DateTime.now.strftime('%Y%m%d%H%M%S')}-#{recommend_book_params[:bookcover].original_filename}" 
+      save_path = Rails.root.join("app/assets/images/", @recommend_book.bookcover)
+
+      File.open(save_path, "w+b") do |f|
+        f.write recommend_book_params[:bookcover].read
       end
     end
+
+    if @recommend_book.save #セーブができたかできなかったか
+      redirect_to recommend_book_url(@recommend_book), notice: "保存成功"
+      #redirect_to books_path
+    else
+      render :new
+    end
+
+    # respond_to do |format|
+    #   if @recommend_book.save
+    #     format.html { redirect_to recommend_book_url(@recommend_book), notice: "作成できました" }
+    #     format.json { render :show, status: :created, location: @recommend_book }
+    #   else
+    #     format.html { render :new, status: :unprocessable_entity }
+    #     format.json { render json: @recommend_book.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /recommend_books/1 or /recommend_books/1.json
   def update
-    respond_to do |format|
-      if @recommend_book.update(recommend_book_params)
-        format.html { redirect_to recommend_book_url(@recommend_book), notice: "編集できました" }
-        format.json { render :show, status: :ok, location: @recommend_book }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @recommend_book.errors, status: :unprocessable_entity }
+    if recommend_book_params[:bookcover].present?
+      @recommend_book.bookcover = "#{DateTime.now.strftime('%Y%m%d%H%M%S')}-#{recommend_book_params[:bookcover].original_filename}" 
+      save_path = Rails.root.join("app/assets/images/", @recommend_book.bookcover)
+
+      File.open(save_path, "w+b") do |f|
+        f.write recommend_book_params[:bookcover].read
       end
+    end
+
+    if @recommend_book.update(recommend_book_params_except_bookcover)
+      redirect_to recommend_books_path
+    else
+      render :edit
     end
   end
 
@@ -83,6 +104,10 @@ class RecommendBooksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def recommend_book_params
-      params.require(:recommend_book).permit(:ISBN_number, :title, :author_name, :recommend)
+      params.require(:recommend_book).permit(:ISBN_number, :title, :author_name, :recommend, :bookcover, :id_coppy)
+    end
+
+    def recommend_book_params_except_bookcover
+      params.require(:recommend_book).permit(:ISBN_number, :title, :author_name, :recommend, :id_coppy)
     end
 end

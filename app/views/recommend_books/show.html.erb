@@ -25,5 +25,10 @@
   <%= @recommend_book.id_coppy %>
 </p>
 
+<p>
+  <strong>ブックカバー</strong>
+  <%= @recommend_book.bookcover %>
+</p>
+
 <%= link_to '編集', edit_recommend_book_path(@recommend_book) %> |
 <%= link_to '戻る', recommend_books_path %>

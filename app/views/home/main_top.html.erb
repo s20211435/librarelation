@@ -23,7 +23,7 @@
                                     <% end %>
                                     <%  @random_new_books.each do |new_book| %>
                                         <th style="text-align: right;"><span>ISBN番号 :</span></th><td><%=new_book.isbn_number %></td>
-                                        </tr>
+                                </tr>
                                         <tr><th><span>タイトル :</span></th><td><%=new_book.title %></td></tr>
                                         <tr><th>著者名 :</th><td><%= new_book.author_name %></td></tr>
                                         <tr><th>入刊日 :</th><td><%= new_book.arrival_day.to_s %></td></tr>

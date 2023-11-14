@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'new_book_sub/show_page'
   get 'dealing/top'
   get 'home/main_top'
   get 'admin/top'

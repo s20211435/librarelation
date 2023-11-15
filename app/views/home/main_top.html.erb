@@ -8,37 +8,55 @@
 <div class="row p-5 ">
     <div class="col-12 col-sm-8 border">
         <div class= "text-center h3">新刊紹介</div>
-            <div class="row border">
-                <div class="col">
-                    <table class="tag">
-                        <div class="d-flex flex-row mb-3">
-                                <div>
-                                    <tr>
-                                        <%  @random_new_books.each do |new_book| %>
-                                            <% if new_book.bookcover.present? %>
-                                                <td rowspan="7"><%= image_tag new_book.bookcover, :width => '200' %></td>
-                                            <% else %>
-                                                <td rowspan="7"></td>
-                                            <% end %>
-                                        <% end %>
-                                        <%  @random_new_books.each do |new_book| %>
-                                            <th style="text-align: right;"><span>ISBN番号 :</span></th><td><%=new_book.isbn_number %></td>
-                                    </tr>
-                                            <tr><th><span>タイトル :</span></th><td><%=new_book.title %></td></tr>
-                                            <tr><th>著者名 :</th><td><%= new_book.author_name %></td></tr>
-                                            <tr><th>入刊日 :</th><td><%= new_book.arrival_day.to_s %></td></tr>
-                                            <% if new_book.lending == 0 %>
-                                                <tr><th>貸出 可/不 :</th><td><span class="text-primary">可</span></td></tr>
-                                            <% elsif new_book.lending == 1 %>
-                                                <tr><th>貸出 可/不 :</th><td><span class="text-danger">不</span></td></tr>
-                                            <% end %><br>
-                                            <tr><th>在館冊数 :</th><td><%= new_book.book_number.to_s %></td></tr>
-                                            <tr><th>ジャンル :</th><td><%=new_book.genre %></td></tr>
-                                        <% end %>
-                                </div>
-                        </div>
-                    </table>
-                </div>
+            <div class="border">
+                <table class="tag">
+                    <tr><td>
+                        <table class="table_newbook">
+                            <div>
+                                <tr>
+                                    <% if @random_new_books[0].bookcover.present? %>
+                                        <td rowspan="7"><%= image_tag @random_new_books[0].bookcover, :width => '200' %></td>
+                                    <% else %>
+                                        <td rowspan="7"></td>
+                                    <% end %>
+                                    <th><span>ISBN番号 :</span></th><td><%=@random_new_books[0].isbn_number %></td></tr>
+                                    <tr><th><span>タイトル :</span></th><td><%=@random_new_books[0].title %></td></tr>
+                                    <tr><th>著者名 :</th><td><%= @random_new_books[0].author_name %></td></tr>
+                                    <tr><th>入刊日 :</th><td><%= @random_new_books[0].arrival_day.to_s %></td></tr>
+                                    <% if @random_new_books[0].lending == 0 %>
+                                        <tr><th>貸出 可/不 :</th><td><span class="text-primary">可</span></td></tr>
+                                    <% elsif @random_new_books[0].lending == 1 %>
+                                        <tr><th>貸出 可/不 :</th><td><span class="text-danger">不</span></td></tr>
+                                    <% end %><br>
+                                    <tr><th>在館冊数 :</th><td><%= @random_new_books[0].book_number.to_s %></td></tr>
+                                    <tr><th>ジャンル :</th><td><%=@random_new_books[0].genre %></td></tr>
+                            </div>
+                        </table>
+                    </td>
+                    <td>
+                        <table class="table_newbook">
+                            <div>
+                                <tr>
+                                    <% if @random_new_books[1].bookcover.present? %>
+                                        <td rowspan="7"><%= image_tag @random_new_books[1].bookcover, :width => '200' %></td>
+                                    <% else %>
+                                        <td rowspan="7"></td>
+                                    <% end %>
+                                    <th><span>ISBN番号 :</span></th><td><%=@random_new_books[1].isbn_number %></td></tr>
+                                    <tr><th><span>タイトル :</span></th><td><%=@random_new_books[1].title %></td></tr>
+                                    <tr><th>著者名 :</th><td><%= @random_new_books[1].author_name %></td></tr>
+                                    <tr><th>入刊日 :</th><td><%= @random_new_books[1].arrival_day.to_s %></td></tr>
+                                    <% if @random_new_books[1].lending == 0 %>
+                                        <tr><th>貸出 可/不 :</th><td><span class="text-primary">可</span></td></tr>
+                                    <% elsif @random_new_books[1].lending == 1 %>
+                                        <tr><th>貸出 可/不 :</th><td><span class="text-danger">不</span></td></tr>
+                                    <% end %><br>
+                                    <tr><th>在館冊数 :</th><td><%= @random_new_books[1].book_number.to_s %></td></tr>
+                                    <tr><th>ジャンル :</th><td><%= @random_new_books[1].genre %></td></tr>
+                            </div>
+                        </table>
+                    </td></tr>
+                </table>
             </div>
         <div class="row border">
             <button class="col text-center btn btn-info m-3">もっと見る</button>

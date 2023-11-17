@@ -161,18 +161,17 @@
                             <td rowspan="4"><%= image_tag @third_rankings.bookcover, :width => '200' %></td>
                         <% end %>
                         <br>
-
                         <th>ISBN番号 :</th><td><%=@third_rankings.isbn_number %></td>
                     </tr>
-                        <tr>
-                            <th>書籍名 :</th><td><%= @third_rankings.title %></td>
-                        </tr>
-                        <tr>
-                            <th>著者名 :</th><td><%=@third_rankings.author_name %></td>
-                        </tr>
-                        <tr>
-                            <th>ランキング :</th><td><%=@third_rankings.book_rank.to_s %></td>
-                        </tr>
+                    <tr>
+                        <th>書籍名 :</th><td><%= @third_rankings.title %></td>
+                    </tr>
+                    <tr>
+                        <th>著者名 :</th><td><%=@third_rankings.author_name %></td>
+                    </tr>
+                    <tr>
+                        <th>ランキング :</th><td><%=@third_rankings.book_rank.to_s %></td>
+                    </tr>
                 </table>
             </div>
         </div>

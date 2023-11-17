@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :new_book_subs
   get 'rankings_sub/show_page'
   get 'new_book_sub/show_page'
   get 'dealing/top'

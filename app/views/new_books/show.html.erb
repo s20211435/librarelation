@@ -40,6 +40,9 @@
   <%= @new_book.bookcover %>
 </p>
 
-
-<%= link_to '編集', edit_new_book_path(@new_book) %> |
-<%= link_to '戻る', new_books_path %>
+<% if request.referer&.include?("localhost:3000/new_books") %>
+  <%= link_to '編集', edit_new_book_path(@new_book) %> |
+  <%= link_to '戻る', new_books_path %>
+<% else %>
+  <%= link_to '戻る', new_book_sub_show_page_path %>
+<% end %>

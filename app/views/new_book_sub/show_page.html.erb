@@ -1,2 +1,12 @@
-<h1>NewBookSub#show_page</h1>
-<p>Find me in app/views/new_book_sub/show_page.html.erb</p>
+<h1>新刊ページ一覧</h1>
+<% @all_new_books.each do |new_books| %>
+    <div class="row border">
+                <% if new_books.bookcover.present? %>
+                    <%= link_to image_tag(new_books.bookcover, width: 200), new_book_path(new_books.id) %>
+                <% else %>
+                  <%= link_to "画像データが入っていません", new_book_path(new_books.id) %>
+                <% end %>
+              <div><%=new_books.title %></div>
+    </div>
+<% end %>
+<%= link_to '戻る', home_main_top_path %>

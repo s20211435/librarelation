@@ -1,2 +1,120 @@
-<h1>RankingsSub#show_page</h1>
-<p>Find me in app/views/rankings_sub/show_page.html.erb</p>
+<div class="aaa border">
+    <h1>月間ランキング一覧ページ</h1>
+
+     <div class=" d-flex justify-content-evenly border">
+        <div class="bd-highlight">
+                        <table class="tag border">
+                            <tr>
+                                <%= image_tag 'iti.png',:width => '200' %>
+                                <% if @first_rankings.bookcover.present? %>
+                                    <td rowspan="4"><%= image_tag @first_rankings.bookcover, :width => '200' %></td>
+                                <% end %>
+                                <br>
+
+                                <th>ISBN番号 :</th><td><%=@first_rankings.isbn_number %></td>
+                            </tr>
+                                <tr>
+                                    <th>書籍名 :</th><td><%= @first_rankings.title %></td>
+                                </tr>
+                                <tr>
+                                    <th>著者名 :</th><td><%=@first_rankings.author_name %></td>
+                                </tr>
+                                <tr>
+                                    <th>ランキング :</th><td><%=@first_rankings.book_rank.to_s %></td>
+                                </tr>
+                            </table>
+                    </div>
+                        <div class="bd-highlight">
+                            <table class="tag border">
+                                    <tr>
+                                        <%= image_tag 'ni.png',:width => '200' %>
+                                        <% if @second_rankings.bookcover.present? %>
+                                            <td rowspan="4"><%= image_tag @second_rankings.bookcover, :width => '200' %></td>
+                                        <% end %>
+                                        <br>
+
+                                        <th>ISBN番号 :</th><td><%=@second_rankings.isbn_number %></td>
+                                    </tr>
+                                        <tr>
+                                            <th>書籍名 :</th><td><%= @second_rankings.title %></td>
+                                        </tr>
+                                        <tr>
+                                            <th>著者名 :</th><td><%=@second_rankings.author_name %></td>
+                                        </tr>
+                                        <tr>
+                                            <th>ランキング :</th><td><%=@second_rankings.book_rank.to_s %></td>
+                                        </tr>
+                            </table>
+                        </div>
+
+                        <div class="bd-highlight">
+                            <table class="tag border">
+                                    <tr>
+                                        <%= image_tag 'san.png',:width => '200' %>
+                                        <% if @third_rankings.bookcover.present? %>
+                                            <td rowspan="4"><%= image_tag @third_rankings.bookcover, :width => '200' %></td>
+                                        <% end %>
+                                        <br>
+
+                                        <th>ISBN番号 :</th><td><%=@third_rankings.isbn_number %></td>
+                                    </tr>
+                                        <tr>
+                                            <th>書籍名 :</th><td><%= @third_rankings.title %></td>
+                                        </tr>
+                                        <tr>
+                                            <th>著者名 :</th><td><%=@third_rankings.author_name %></td>
+                                        </tr>
+                                        <tr>
+                                            <th>ランキング :</th><td><%=@third_rankings.book_rank.to_s %></td>
+                                        </tr>
+                                    </table>
+                            </div>
+        </div>
+        <div class="d-flex justify-content-evenly">
+                            <div class="bd-highlight">
+                                <table class="tag border">
+                                    <tr>
+                                        <h1>4位</h1>
+                                        <% if @force_rankings.bookcover.present? %>
+                                            <td rowspan="4"><%= image_tag @force_rankings.bookcover, :width => '200' %></td>
+                                        <% end %>
+                                        <br>
+
+                                        <th>ISBN番号 :</th><td><%=@force_rankings.isbn_number %></td>
+                                    </tr>
+                                        <tr>
+                                            <th>書籍名 :</th><td><%= @force_rankings.title %></td>
+                                        </tr>
+                                        <tr>
+                                            <th>著者名 :</th><td><%=@force_rankings.author_name %></td>
+                                        </tr>
+                                        <tr>
+                                            <th>ランキング :</th><td><%=@force_rankings.book_rank.to_s %></td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                            <div class="bd-highlight">
+                                <table class="tag border">
+                                    <tr>
+                                        <h1>5位</h1>
+                                        <% if @fifth_rankings.bookcover.present? %>
+                                            <td rowspan="4"><%= image_tag @fifth_rankings.bookcover, :width => '200' %></td>
+                                        <% end %>
+                                        <br>
+
+                                        <th>ISBN番号 :</th><td><%=@fifth_rankings.isbn_number %></td>
+                                    </tr>
+                                        <tr>
+                                            <th>書籍名 :</th><td><%= @fifth_rankings.title %></td>
+                                        </tr>
+                                        <tr>
+                                            <th>著者名 :</th><td><%=@fifth_rankings.author_name %></td>
+                                        </tr>
+                                        <tr>
+                                            <th>ランキング :</th><td><%=@fifth_rankings.book_rank.to_s %></td>
+                                        </tr>
+                                    </table>
+                                </div>
+        </div>
+</div>

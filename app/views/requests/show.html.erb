@@ -39,6 +39,11 @@
   <strong>名前</strong>
   <%= @request.name %>
 </p>
+<% if request.referer&.include?("http://localhost:3000/requests/new?isbn") %>
+<%= link_to '戻る',  home_main_top_path  %>
+ 
+<% else %>
+   <%= link_to '編集', edit_request_path(@request) %> |
+  <%= link_to '戻る', requests_path %>
+<% end %>
 
-<%= link_to '編集', edit_request_path(@request) %> |
-<%= link_to '戻る', requests_path %>

@@ -1,10 +1,5 @@
 <h1>利用者トップページ</h1>
 
-<% @random_new_books.each do |book| %>
-<%= book.title %>
-<br>
-<% end %>
-
 <div class="row p-5 ">
     <div class="col-12 col-sm-8 border">
         <div class= "text-center h3">新刊紹介</div>
@@ -104,8 +99,8 @@
             </div>
         </div>
         <div class="row border">
-            <button class="col text-center btn btn-info m-3">設定</button>
-            <button class="col text-center btn btn-info m-3">処分本リスト</button>
+            <button class="col text-center btn btn-info m-3"><a href="/admin/top">管理者ログインページ</a></button>
+            <button class="col text-center btn btn-info m-3"><a href="/dealing/top.html">処分本リストを見る</a></button>
         </div>
     </div>
 
@@ -177,14 +172,3 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-

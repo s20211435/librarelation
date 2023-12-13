@@ -1,5 +1,8 @@
 <h1>新刊リクエスト登録</h1>
-
+<% if @judge == "out" %>
+    <%= @error_txt %>
+    <br><br>
+<% end %>
 <%= render 'form', request: @request %>
 
 <%= link_to '戻る', home_main_top_path %>

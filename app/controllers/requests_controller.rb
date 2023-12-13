@@ -14,18 +14,30 @@ class RequestsController < ApplicationController
   def new
     @request = Request.new
     @client = OpenBD::Client.new
-    @client = @client.bulk_get params["isbn"]["number"]
 
-    if @client.body.include?(nil)
-      @judge = "out"
-      @error_txt = "見つかりませんでした。"
-      render isbn_search_requests_path
-      return
+    #isbn検索ボタンを押したとき
+    if params["isbn"].present?
+      @client = @client.bulk_get params["isbn"]["number"]   
+
+      #検索内容が空または見つからなかった時
+      if @client.body.include?(nil)
+        @judge = "out"
+        @error_txt = "見つかりませんでした。"
+        @request.isbn_number = params["isbn"]["number"] 
+        render new_request_path
+        return
+      end  
+
+      @request.isbn_number = @client.body[0]["onix"]["RecordReference"]
+      @request.title = @client.body[0]["onix"]["DescriptiveDetail"]["TitleDetail"]["TitleElement"]["TitleText"]["content"]
+      if @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[0].present? && @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[1].present?
+        @request.author_name = @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[0] + @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[1]
+      elsif @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[0].present?
+        @request.author_name = @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[0]
+      elsif @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[1].present?
+        @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[1]
+      end
     end
-
-    @request.isbn_number = @client.body[0]["onix"]["RecordReference"]
-    @request.title = @client.body[0]["onix"]["DescriptiveDetail"]["TitleDetail"]["TitleElement"]["TitleText"]["content"]
-    @request.author_name = @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[0] + @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[1]
   end
 
   # GET /requests/1/edit

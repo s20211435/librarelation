@@ -1,3 +1,4 @@
+
 <%= form_with(model: request) do |form| %>
   <% if request.errors.any? %>
     <div id="error_explanation">
@@ -12,18 +13,18 @@
   <% end %>
 
   <div class="field">
-    <%= form.label "ISBN番号" %>
-    <%= form.text_field :isbn_number %>
+    <%= form.label "著者名" %>
+    <%= form.text_field :author_name %>
   </div>
 
   <div class="field">
-    <%= form.label "書籍名"%>
+    <%= form.label "書籍名" %>
     <%= form.text_field :title %>
   </div>
 
   <div class="field">
-    <%= form.label "著者名" %>
-    <%= form.text_field :author_name %>
+    <%= form.label "ISBN番号" %>
+    <%= form.text_field :isbn_number %>
   </div>
 
   <div class="field">

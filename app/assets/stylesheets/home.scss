@@ -12,3 +12,96 @@
 .table_newbook {
    display: flex;
 }
+
+.top_header img{
+   background-color: rgb(229, 218, 216);
+   margin: 0;
+   margin-right: 150px;
+   margin-left: 50px;
+}
+.top_header{
+   background-color: rgb(229, 218, 216);
+   margin: auto;
+   display: flex;
+   align-items: center;
+}
+.top_header button{
+   text-decoration: none;
+   font-size: 150%;
+   margin-right: 50px;
+   display:block;
+   position: relative;
+   left: 400px;
+   border: none;
+   background-color: rgb(229, 218, 216);
+}
+
+.top_header button:hover{
+  border: solid 0.1px;
+  border-color: white;
+}
+
+
+/*--------------------------------------
+  カード型_02
+--------------------------------------*/
+.l-wrapper_02 {
+   margin: 1rem auto;
+   width: 320px;
+ }
+ .card-radius_02{
+   overflow: hidden;
+   border-radius: 8px;
+   box-shadow: 0 4px 15px rgba(0,0,0,.2);
+ }
+ 
+ .card_02 {
+   background-color: #fff;
+   box-shadow: 0 0 0px rgba(0, 0, 0, .16);
+   color: #212121;
+   text-decoration: none;
+ }
+ 
+ .card__header_02 {
+   flex-wrap: wrap;
+ }
+ 
+ .card__title_02 {
+   padding: 1rem 1.5rem 0;
+   font-size: 1.6rem;
+   order: 1;
+   font-weight: bold;
+   text-decoration: none;
+   /*線の種類（実線） 太さ 色*/
+   border-bottom: solid 3px black;
+ 
+ }
+ 
+ .card__thumbnail_02 {
+   margin: 0;
+   order: 0;
+ }
+ 
+ .card__image_02 {
+   width: 100%;
+ }
+ 
+ .card__body_02 {
+   padding: 0 1.5rem;
+ }
+ 
+ .card__text_02 {
+   font-size: .8rem;
+   text-align:center;
+   text-decoration: none;
+ }
+ 
+ .card__text2_02 {
+   font-size: .8rem;
+   margin-top: 0;
+   margin-bottom: 1.5rem;
+ }
+ .card__thumbnail_02 {
+    text-align: center;
+ }
+

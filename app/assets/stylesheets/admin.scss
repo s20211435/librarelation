@@ -1,3 +1,51 @@
 // Place all the styles related to the admin controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+body{
+    margin-bottom: 20px;
+}
+
+.header {
+    margin: auto;
+    text-align: center;
+    max-width: 700px;
+    border-bottom: solid;
+}
+
+.header button {
+    position: relative;
+    left: 300px;
+    bottom: 40px; 
+}
+
+.admin_button{
+    background-color: #a8e3eb;
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+    border-radius: 15px;
+    padding: 40px;
+}
+
+.admin_button button{
+    padding: 15px 10px;
+    font-size: 30px;
+    border-radius: 10px;
+    margin: 5px;
+    border-style: none;
+    width: 400px;
+}
+
+.admin_button button:hover {
+    background: gray;
+    color: white;
+}
+
+.admin-button {
+    padding: 10px;
+}
+
+.admin-button button{
+    padding: 20px 80px;
+}

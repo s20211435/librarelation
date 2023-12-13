@@ -1,6 +1,10 @@
-<h1>利用者トップページ</h1>
-
-<div class="row p-5 ">
+<div class="top_header">
+    <%= image_tag 'll_logo.png',:width => '220',:height => '110' %>
+    <button onclick="location.href='/admin/top'">管理者ログインページ</button>
+    <button onclick="location.href='/dealing/top.html'">処分本リスト</button>
+    <button onclick="location.href='/requests/isbn_search'">新刊リクエスト</button>
+</div>
+<div class="row ">
     <div class="col-12 col-sm-8 border">
         <div class= "text-center h3">新刊紹介</div>
             <div class="border">
@@ -10,7 +14,7 @@
                             <div>
                                 <tr>
                                     <% if @random_new_books[0].bookcover.present? %>
-                                        <td rowspan="7"><%= image_tag @random_new_books[0].bookcover, :width => '200' %></td>
+                                        <td rowspan="7"><%= image_tag @random_new_books[0].bookcover, :width => '150' %></td>
                                     <% else %>
                                         <td rowspan="7"></td>
                                     <% end %>
@@ -33,7 +37,7 @@
                             <div>
                                 <tr>
                                     <% if @random_new_books[1].bookcover.present? %>
-                                        <td rowspan="7"><%= image_tag @random_new_books[1].bookcover, :width => '200' %></td>
+                                        <td rowspan="7"><%= image_tag @random_new_books[1].bookcover, :width => '150' %></td>
                                     <% else %>
                                         <td rowspan="7"></td>
                                     <% end %>
@@ -53,55 +57,83 @@
                     </td></tr>
                 </table>
             </div>
-        <div class="row border">
-            <button class="col text-center btn btn-info m-3"><a href="/new_book_sub/show_page">もっと見る</a></button>
-            <button class="col text-center btn btn-info m-3"><a href="/requests/isbn_search">リクエスト</a></button>
-        </div>
+      
         
         <div class="">
             <div class= " text-center h3">図書館司書おすすめの本</div>
             <div class="row border">
                 <div class="row">
                     <div class="col p-3">
-                        <% if @first_recommend_book.bookcover.present? %>
-                                <td><%= image_tag @first_recommend_book.bookcover, :width => '200' %></td><br>
-                        <% else %>
-                                <td></td>
-                        <% end %>
-                        <%= "ISBN番号 : " + @first_recommend_book.ISBN_number %><br>
-                        <%= "タイトル : " + @first_recommend_book.title %><br>
-                        <%= "著者名 : " + @first_recommend_book.author_name %><br>
-                        <%= "おすすめ理由 : " + @first_recommend_book.recommend %><br>
+                        <div class="l-wrapper_02 card-radius_02">
+                            <article class="card_02">
+                                <div class="card__header_02">
+                                <p class="card__title_02">
+                                    <%= @first_recommend_book.title %><br><br>
+                                </p>
+                                <figure class="card__thumbnail_02">
+                                <% if @first_recommend_book.bookcover.present? %>
+                                        <td><%= image_tag @first_recommend_book.bookcover, :width => '150' %></td><br>
+                                <% else %>
+                                        <td></td> 
+                                <% end %>
+                                </figure>
+                                </div>
+                                <div class="card__body_02">
+                                    <p class="card__text2_02"><%= @first_recommend_book.author_name %><br></p>
+                                    <p class="card__text2_02"><%= "おすすめ理由 : " + @first_recommend_book.recommend %><br></p>
+                                </div>   
+                            </article>
+                        </div>
+                    </div>
+                    
+                    <div class="col p-3">
+                        <div class="l-wrapper_02 card-radius_02">
+                            <article class="card_02">
+                                <div class="card__header_02">
+                                <p class="card__title_02">
+                                    <%= @second_recommend_book.title %><br><br>
+                                </p>
+                                <figure class="card__thumbnail_02">
+                                <% if @second_recommend_book.bookcover.present? %>
+                                        <td><%= image_tag @second_recommend_book.bookcover, :width => '150' %></td><br>
+                                <% else %>
+                                        <td></td> 
+                                <% end %>
+                                </figure>
+                                </div>
+                                <div class="card__body_02">
+                                    <p class="card__text2_02"><%= @second_recommend_book.author_name %><br></p>
+                                    <p class="card__text2_02"><%= "おすすめ理由 : " + @second_recommend_book.recommend %><br></p>
+                                </div>   
+                            </article>
+                        </div>
                     </div>
                     <div class="col p-3">
-                        <% if @second_recommend_book.bookcover.present? %>
-                                <td><%= image_tag @second_recommend_book.bookcover, :width => '200' %></td><br>
-                        <% else %>
-                                <td></td>
-                        <% end %>
-                        <%= "ISBN番号 : " + @second_recommend_book.ISBN_number %><br>
-                        <%= "タイトル : " + @second_recommend_book.title %><br>
-                        <%= "著者名 : " + @second_recommend_book.author_name %><br>
-                        <%= "おすすめ理由 : " + @second_recommend_book.recommend %><br>
-                    </div>
-                    <div class="col p-3">
-                        <% if @third_recommend_book.bookcover.present? %>
-                                <td><%= image_tag @third_recommend_book.bookcover, :width => '200' %></td><br>
-                        <% else %>
-                                <td></td>
-                        <% end %>
-                        <%= "ISBN番号 : " + @third_recommend_book.ISBN_number %><br>
-                        <%= "タイトル : " + @third_recommend_book.title %><br>
-                        <%= "著者名 : " + @third_recommend_book.author_name %><br>
-                        <%= "おすすめ理由 : " + @third_recommend_book.recommend %><br>
+                        <div class="l-wrapper_02 card-radius_02">
+                            <article class="card_02">
+                                <div class="card__header_02">
+                                <p class="card__title_02">
+                                    <%= @third_recommend_book.title %><br><br>
+                                </p>
+                                <figure class="card__thumbnail_02">
+                                <% if @third_recommend_book.bookcover.present? %>
+                                        <td><%= image_tag @third_recommend_book.bookcover, :width => '150' %></td><br>
+                                <% else %>
+                                        <td></td> 
+                                <% end %>
+                                </figure>
+                                </div>
+                                <div class="card__body_02">
+                                    <p class="card__text2_02"><%= @third_recommend_book.author_name %><br></p>
+                                    <p class="card__text2_02"><%= "おすすめ理由 : " + @third_recommend_book.recommend %><br></p>
+                                </div>   
+                            </article>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row border">
-            <button class="col text-center btn btn-info m-3"><a href="/admin/top">管理者ログインページ</a></button>
-            <button class="col text-center btn btn-info m-3"><a href="/dealing/top.html">処分本リストを見る</a></button>
-        </div>
+ 
     </div>
 
     
@@ -111,7 +143,7 @@
                 <table class="tag">
                     <tr>
                         <% if @first_rankings.bookcover.present? %>
-                            <td rowspan="4"><%= image_tag @first_rankings.bookcover, :width => '200' %></td>
+                            <td rowspan="4"><%= image_tag @first_rankings.bookcover, :width => '150' %></td>
                         <% end %>
                         <br>
 
@@ -132,7 +164,7 @@
                 <table class="tag">
                     <tr>
                         <% if @second_rankings.bookcover.present? %>
-                            <td rowspan="4"><%= image_tag @second_rankings.bookcover, :width => '200' %></td>
+                            <td rowspan="4"><%= image_tag @second_rankings.bookcover, :width => '150' %></td>
                         <% end %>
                         <br>
 
@@ -153,7 +185,7 @@
                 <table class="tag">
                     <tr>
                         <% if @third_rankings.bookcover.present? %>
-                            <td rowspan="4"><%= image_tag @third_rankings.bookcover, :width => '200' %></td>
+                            <td rowspan="4"><%= image_tag @third_rankings.bookcover, :width => '150' %></td>
                         <% end %>
                         <br>
                         <th>ISBN番号 :</th><td><%=@third_rankings.isbn_number %></td>

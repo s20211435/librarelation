@@ -15,18 +15,39 @@ class NewBooksController < ApplicationController
     @new_book = NewBook.new
 
     @client = OpenBD::Client.new
-    @client = @client.bulk_get params["isbn"]["number"]
+    # @client = @client.bulk_get params["isbn"]["number"]
+    if params["isbn"].present?
+      @client = @client.bulk_get params["isbn"]["number"]   
 
-    if @client.body.include?(nil)
-      @judge = "out"
-      @error_txt = "見つかりませんでした。"
-      render isbn_search_new_books_path
-      return
+      #検索内容が空または見つからなかった時
+      if @client.body.include?(nil)
+        @judge = "out"
+        @error_txt = "見つかりませんでした。"
+        @new_book.isbn_number = params["isbn"]["number"] 
+        render new_new_book_path
+        return
+      end  
+
+      @new_book.isbn_number = @client.body[0]["onix"]["RecordReference"]
+      @new_book.title = @client.body[0]["onix"]["DescriptiveDetail"]["TitleDetail"]["TitleElement"]["TitleText"]["content"]
+      if @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[0].present? && @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[1].present?
+        @new_book.author_name = @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[0] + @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[1]
+      elsif @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[0].present?
+        @new_book.author_name = @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[0]
+      elsif @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[1].present?
+        @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[1]
+      end
     end
+    # if @client.body.include?(nil)
+    #   @judge = "out"
+    #   @error_txt = "見つかりませんでした。"
+    #   render isbn_search_new_books_path
+    #   return
+    # end
 
-    @new_book.isbn_number = @client.body[0]["onix"]["RecordReference"]
-    @new_book.title = @client.body[0]["onix"]["DescriptiveDetail"]["TitleDetail"]["TitleElement"]["TitleText"]["content"]
-    @new_book.author_name = @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[0] + @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[1]
+    # @new_book.isbn_number = @client.body[0]["onix"]["RecordReference"]
+    # @new_book.title = @client.body[0]["onix"]["DescriptiveDetail"]["TitleDetail"]["TitleElement"]["TitleText"]["content"]
+    # @new_book.author_name = @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[0] + @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[1]
   end
 
   # GET /new_books/1/edit

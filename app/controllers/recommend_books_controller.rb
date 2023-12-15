@@ -14,18 +14,39 @@ class RecommendBooksController < ApplicationController
   def new
     @recommend_book = RecommendBook.new
     @client = OpenBD::Client.new
-    @client = @client.bulk_get params["isbn"]["number"]
+    # @client = @client.bulk_get params["isbn"]["number"]
+    if params["isbn"].present?
+      @client = @client.bulk_get params["isbn"]["number"]   
 
-    if @client.body.include?(nil)
-      @judge = "out"
-      @error_txt = "見つかりませんでした。"
-      render isbn_search_recommend_books_path
-      return
+      #検索内容が空または見つからなかった時
+      if @client.body.include?(nil)
+        @judge = "out"
+        @error_txt = "見つかりませんでした。"
+        @recommend_book.ISBN_number = params["isbn"]["number"] 
+        render new_recommend_books_path
+        return
+      end  
+
+      @recommend_book.ISBN_number = @client.body[0]["onix"]["RecordReference"]
+      @recommend_book.title = @client.body[0]["onix"]["DescriptiveDetail"]["TitleDetail"]["TitleElement"]["TitleText"]["content"]
+      if @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[0].present? && @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[1].present?
+        @recommend_book.author_name = @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[0] + @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[1]
+      elsif @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[0].present?
+        @recommend_book.author_name = @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[0]
+      elsif @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[1].present?
+        @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[1]
+      end
     end
+    # if @client.body.include?(nil)
+    #   @judge = "out"
+    #   @error_txt = "見つかりませんでした。"
+    #   render isbn_search_recommend_books_path
+    #   return
+    # end
 
-    @recommend_book.ISBN_number = @client.body[0]["onix"]["RecordReference"]
-    @recommend_book.title = @client.body[0]["onix"]["DescriptiveDetail"]["TitleDetail"]["TitleElement"]["TitleText"]["content"]
-    @recommend_book.author_name = @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[0] + @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[1]
+    # @recommend_book.ISBN_number = @client.body[0]["onix"]["RecordReference"]
+    # @recommend_book.title = @client.body[0]["onix"]["DescriptiveDetail"]["TitleDetail"]["TitleElement"]["TitleText"]["content"]
+    # @recommend_book.author_name = @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[0] + @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[1]
   end
 
   # GET /recommend_books/1/edit

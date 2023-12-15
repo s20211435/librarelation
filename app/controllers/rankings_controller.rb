@@ -15,20 +15,41 @@ class RankingsController < ApplicationController
     @ranking = Ranking.new
 
     @client = OpenBD::Client.new
-    @client = @client.bulk_get params["isbn"]["number"]
-    
-    if @client.body.include?(nil)
-      @judge = "out"
-      @error_txt = "見つかりませんでした。"
-      render isbn_search_rankings_path
-      return
+    # @client = @client.bulk_get params["isbn"]["number"]
+    if params["isbn"].present?
+      @client = @client.bulk_get params["isbn"]["number"]   
+
+      #検索内容が空または見つからなかった時
+      if @client.body.include?(nil)
+        @judge = "out"
+        @error_txt = "見つかりませんでした。"
+        @ranking.isbn_number = params["isbn"]["number"] 
+        render new_ranking_path
+        return
+      end  
+
+      @ranking.isbn_number = @client.body[0]["onix"]["RecordReference"]
+      @ranking.title = @client.body[0]["onix"]["DescriptiveDetail"]["TitleDetail"]["TitleElement"]["TitleText"]["content"]
+      if @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[0].present? && @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[1].present?
+        @ranking.author_name = @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[0] + @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[1]
+      elsif @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[0].present?
+        @ranking.author_name = @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[0]
+      elsif @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[1].present?
+        @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[1]
+      end
     end
+    # if @client.body.include?(nil)
+    #   @judge = "out"
+    #   @error_txt = "見つかりませんでした。"
+    #   render isbn_search_rankings_path
+    #   return
+    # end
 
     # viewにエラーメッセージを表示する処理
-    client_body_onix = @client.body[0]["onix"]
-    @ranking.isbn_number = client_body_onix["RecordReference"]
-    @ranking.title = client_body_onix["DescriptiveDetail"]["TitleDetail"]["TitleElement"]["TitleText"]["content"]
-    @ranking.author_name = client_body_onix["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[0] + @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[1]
+    # client_body_onix = @client.body[0]["onix"]
+    # @ranking.isbn_number = client_body_onix["RecordReference"]
+    # @ranking.title = client_body_onix["DescriptiveDetail"]["TitleDetail"]["TitleElement"]["TitleText"]["content"]
+    # @ranking.author_name = client_body_onix["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[0] + @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[1]
   end
 
   # GET /rankings/1/edit

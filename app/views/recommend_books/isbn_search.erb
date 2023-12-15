@@ -1,5 +1,6 @@
 <div class="main-frame">
   <h1 class="title">ISBN番号検索</h1>
+  <%= link_to '手動入力',new_ranking_path %>
   <form action="/recommend_books/new" method="get" >
     <div class="search-form">
       <input type="text" name="isbn[number]" placeholder="ISBN番号を入力して下さい">

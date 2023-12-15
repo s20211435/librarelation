@@ -45,28 +45,32 @@
 /*--------------------------------------
   カード型_02
 --------------------------------------*/
-.l-wrapper_02 {
+.main_body {
+  display: flex;
+}
+
+.main_body .l-wrapper_02 {
    margin: 1rem auto;
    width: 320px;
  }
- .card-radius_02{
+ .main_body .card-radius_02{
    overflow: hidden;
    border-radius: 8px;
    box-shadow: 0 4px 15px rgba(0,0,0,.2);
  }
  
- .card_02 {
+ .main_body .card_02 {
    background-color: #fff;
    box-shadow: 0 0 0px rgba(0, 0, 0, .16);
    color: #212121;
    text-decoration: none;
  }
  
- .card__header_02 {
+ .main_body .card__header_02 {
    flex-wrap: wrap;
  }
  
- .card__title_02 {
+ .main_body .card__title_02 {
    padding: 1rem 1.5rem 0;
    font-size: 1.6rem;
    order: 1;
@@ -74,34 +78,104 @@
    text-decoration: none;
    /*線の種類（実線） 太さ 色*/
    border-bottom: solid 3px black;
- 
+   line-height: 1.6rem;
+   text-align: center;
  }
  
- .card__thumbnail_02 {
+ .main_body .card__thumbnail_02 {
    margin: 0;
    order: 0;
  }
  
- .card__image_02 {
+ .main_body .card__image_02 {
    width: 100%;
  }
  
- .card__body_02 {
+ .main_body .card__body_02 {
    padding: 0 1.5rem;
  }
  
- .card__text_02 {
+ .main_body .card__text_02 {
    font-size: .8rem;
    text-align:center;
    text-decoration: none;
  }
  
- .card__text2_02 {
+ .main_body .card__text2_02 {
    font-size: .8rem;
    margin-top: 0;
    margin-bottom: 1.5rem;
  }
- .card__thumbnail_02 {
+
+ .main_body .card__thumbnail_02 {
     text-align: center;
  }
 
+
+
+ /*--------------------------------------
+  カード型_02
+--------------------------------------*/
+
+.main_header{
+  display: flex;
+}
+.main_header .l-wrapper_02 {
+  margin: 1rem auto;
+  width: 380px;
+}
+.main_header .card-radius_02{
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,.2);
+}
+
+.main_header .card_02 {
+  background-color: #fff;
+  box-shadow: 0 0 0px rgba(0, 0, 0, .16);
+  color: #212121;
+  text-decoration: none;
+}
+
+.main_header .card__header_02 {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.main_header .card__title_02 {
+  padding: 1rem 1.5rem 0;
+  font-size: 1.6rem;
+  order: 1;
+  font-weight: bold;
+  text-decoration: none;
+  /*線の種類（実線） 太さ 色*/
+  border-bottom: solid 3px black;
+
+}
+
+.main_header .card__thumbnail_02 {
+  margin: 0;
+  order: 0;
+
+}
+
+.main_header .card__image_02 {
+  width: 100%;
+
+}
+
+.main_header .card__body_02 {
+  padding: 0 1.5rem;
+}
+
+.main_header .card__text_02 {
+  font-size: .8rem;
+  text-align:center;
+  text-decoration: none;
+}
+
+.main_header .card__text2_02 {
+  font-size: .8rem;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}

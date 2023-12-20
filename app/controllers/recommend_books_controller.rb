@@ -23,7 +23,7 @@ class RecommendBooksController < ApplicationController
         @judge = "out"
         @error_txt = "見つかりませんでした。"
         @recommend_book.ISBN_number = params["isbn"]["number"] 
-        render new_recommend_books_path
+        render new_recommend_book_path
         return
       end  
 

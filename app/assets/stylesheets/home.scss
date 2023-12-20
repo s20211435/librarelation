@@ -12,7 +12,11 @@
 .table_newbook {
    display: flex;
 }
-
+.table_ranking{
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,.2);
+}
 .top_header img{
    background-color: rgb(229, 218, 216);
    margin: 0;

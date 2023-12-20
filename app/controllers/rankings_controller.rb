@@ -38,18 +38,7 @@ class RankingsController < ApplicationController
         @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[1]
       end
     end
-    # if @client.body.include?(nil)
-    #   @judge = "out"
-    #   @error_txt = "見つかりませんでした。"
-    #   render isbn_search_rankings_path
-    #   return
-    # end
 
-    # viewにエラーメッセージを表示する処理
-    # client_body_onix = @client.body[0]["onix"]
-    # @ranking.isbn_number = client_body_onix["RecordReference"]
-    # @ranking.title = client_body_onix["DescriptiveDetail"]["TitleDetail"]["TitleElement"]["TitleText"]["content"]
-    # @ranking.author_name = client_body_onix["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[0] + @client.body[0]["onix"]["DescriptiveDetail"]["Contributor"][1]["PersonName"]["content"].split(",")[1]
   end
 
   # GET /rankings/1/edit

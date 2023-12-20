@@ -1,15 +1,22 @@
-<h1>ISBN番号検索</h1>
 
-<%= link_to '手動入力',new_request_path %>
+<div class="main-frame">
+  <h1 class="title">ISBN番号検索</h1>
+  <%= link_to '手動入力',new_request_path %>
+  <form action="/requests/new" method="get" >
+    <div class="search-form">
+      <input type="text" name="isbn[number]" placeholder="ISBN番号を入力して下さい">
+    </div>
+    <% if @judge == "out" %>
+      <p class="text-danger">
+        <%= @error_txt %>
+      </p>
+    <% end %>
+    <button type="submit" class="btn submit-button">
+      検索
+    </button>
+  </form>
+</div>
 
-<% if @judge == "out" %>
-    <%= @error_txt %>
-    <br><br>
-<% end %>
-
-<form action="/requests/new" method="get" >
-  <input type="text" name="isbn[number]">
-  <input type="submit" />
-</form>
-
-<%= link_to '戻る', home_main_top_path %>
+<div class= "text-center mt-3">
+  <%= link_to '戻る', home_main_top_path %>
+</div>

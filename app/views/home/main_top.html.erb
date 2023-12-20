@@ -97,7 +97,7 @@
     <div class="col-12 col-sm-4 border d-flex flex-column bd-highlight">
             <div class="text-center h3">月間ランキング</div>
             <div class="p-2 bd-highlight">
-                <table class="tag">
+                <table class="tag border p-4 table_ranking">
                     <tr>
                         <% if @first_rankings.bookcover.present? %>
                             <td rowspan="4"><%= image_tag @first_rankings.bookcover, :width => '150' %></td>
@@ -118,7 +118,7 @@
                 </table>
             </div>
             <div class="p-2 bd-highlight">
-                <table class="tag">
+                <table class="tag border p-4 table_ranking">
                     <tr>
                         <% if @second_rankings.bookcover.present? %>
                             <td rowspan="4"><%= image_tag @second_rankings.bookcover, :width => '150' %></td>
@@ -139,7 +139,7 @@
                 </table>
             </div>
             <div class="p-2 bd-highlight">
-                <table class="tag">
+                <table class="tag border p-4 table_ranking">
                     <tr>
                         <% if @third_rankings.bookcover.present? %>
                             <td rowspan="4"><%= image_tag @third_rankings.bookcover, :width => '150' %></td>

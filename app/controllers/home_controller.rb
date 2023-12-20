@@ -14,6 +14,8 @@ class HomeController < ApplicationController
     @second_recommend_book = RecommendBook.find_by(id_coppy: '2')
     @third_recommend_book = RecommendBook.find_by(id_coppy: '3')
 
+    @recommend_books = RecommendBook.all
+
     @first_rankings = Ranking.find_by(book_rank: '1')
     @second_rankings = Ranking.find_by(book_rank: '2')
     @third_rankings = Ranking.find_by(book_rank: '3')

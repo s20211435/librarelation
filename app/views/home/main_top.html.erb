@@ -4,65 +4,71 @@
     <button onclick="location.href='/dealing/top.html'">処分本リスト</button>
     <button onclick="location.href='/requests/isbn_search'">新刊リクエスト</button>
 </div>
-<div class="row ">
+<div class="row">
     <div class="col-12 col-sm-8 border">
-        <div class= "text-center h3">新刊紹介</div>
-            <div class="border">
+        <div class= "text-center h3 mb-4">新刊紹介</div>
+            <div class="">
                 <table class="tag m-auto">
                     <tr><td>
-                        <table class="table_newbook border p-4">
-                            <tr>
-                                <% if @random_new_books[0].bookcover.present? %>
-                                    <td rowspan="6"><%= image_tag @random_new_books[0].bookcover, :width => '150' %></td>
-                                <% else %>
-                                    <td rowspan="6"></td>
-                                <% end %>
-                                <td><%=@random_new_books[0].title %></td>
-                            </tr>
-
-                            <tr><th>著者名 :</th><td><%= @random_new_books[0].author_name %></td></tr>
-                            <tr><th>入刊日 :</th><td><%= @random_new_books[0].arrival_day.to_s %></td></tr>
-                            <% if @random_new_books[0].lending == 0 %>
-                                <tr><th>貸出 可/不 :</th><td><span class="text-primary">可</span></td></tr>
-                            <% elsif @random_new_books[0].lending == 1 %>
-                                <tr><th>貸出 可/不 :</th><td><span class="text-danger">不</span></td></tr>
-                            <% end %><br>
-                            <tr><th>在館冊数 :</th><td><%= @random_new_books[0].book_number.to_s %></td></tr>
-                            
-                            <tr><th>ジャンル :</th><td><%=@random_new_books[0].genre %></td></tr>
-                        </table>
-                    </td>
-                    <td>
-                        <table class="table_newbook border p-4">
-                            <div>
-                                <tr>
-                                    <% if @random_new_books[1].bookcover.present? %>
-                                        <td rowspan="7"><%= image_tag @random_new_books[1].bookcover, :width => '150' %></td>
-                                    <% else %>
-                                        <td rowspan="7"></td>
-                                    <% end %>
-                                    <th><span>ISBN番号 :</span></th><td><%=@random_new_books[1].isbn_number %></td>
-                                </tr>
-                                <tr><th><span>タイトル :</span></th><td><%=@random_new_books[1].title %></td></tr>
-                                <tr><th>著者名 :</th><td><%= @random_new_books[1].author_name %></td></tr>
-                                <tr><th>入刊日 :</th><td><%= @random_new_books[1].arrival_day.to_s %></td></tr>
-                                <% if @random_new_books[1].lending == 0 %>
-                                    <tr><th>貸出 可/不 :</th><td><span class="text-primary">可</span></td></tr>
-                                <% elsif @random_new_books[1].lending == 1 %>
-                                    <tr><th>貸出 可/不 :</th><td><span class="text-danger">不</span></td></tr>
-                                <% end %><br>
-                                <tr><th>在館冊数 :</th><td><%= @random_new_books[1].book_number.to_s %></td></tr>
-                                <tr><th>ジャンル :</th><td><%= @random_new_books[1].genre %></td></tr>
+                        <div class="border p-3 newbook card card-width">
+                            <div class="row">
+                                <div class="col-12 h2 text-center border-bottom"><%=@random_new_books[0].title %></div>
                             </div>
-                        </table>
+                            <div class="row">
+                                <div class="col-5 center-block text-center"><%= image_tag @random_new_books[0].bookcover, :width => '200' %></div>
+                                <div class="col-7 d-flex flex-column justify-content-around h5">
+                                    <div class="col h2"><%=@random_new_books[0].author_name %></div>
+                                    <div class="col">ジャンル:<%= @random_new_books[0].genre %></div>
+                                    <div class="col">入館日:<%= @random_new_books[0].arrival_day.to_s %></div>
+                                    <div class="col">在館冊数:<%= @random_new_books[0].book_number.to_s %></div>
+                                    <div class="col">
+                                        <div class="ribbon01">
+                                            <div class="col-5 text-center d-inline h5 ">
+                                                <% if @random_new_books[1].lending == 0 %>
+                                                    <div class="h4 mt-3">貸出:<span class="text-primary">可</span></div>
+                                                <% elsif @random_new_books[1].lending == 1 %>
+                                                    <div class="h4 mt-3">貸出:<span class="text-danger">不</span></div>
+                                                <% end %><br>
+                                            </div>
+                                        </div>
+                                    <div>
+                                </div>
+                            </div> 
+                        </div>
+                    </td><td>
+
+                        <div class="border p-3 newbook card card-width">
+                            <div class="row">
+                                <div class="col-12 h2 text-center border-bottom"><%=@random_new_books[1].title %></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-5 center-block text-center "><%= image_tag @random_new_books[1].bookcover, :width => '200' %></div>
+                                <div class="col-7 d-flex flex-column justify-content-around h5">
+                                    <div class="col h2"><%=@random_new_books[1].author_name %></div>
+                                    <div class="col">ジャンル:<%= @random_new_books[1].genre %></div>
+                                    <div class="col">入館日:<%= @random_new_books[1].arrival_day.to_s %></div>
+                                    <div class="col">在館冊数:<%= @random_new_books[1].book_number.to_s %></div>
+                                    <div class="col">
+                                    <div class="ribbon01">
+                                        <div class="col-5 text-center d-inline h5 ">
+                                            <% if @random_new_books[1].lending == 0 %>
+                                                <div class="h4 mt-3">貸出:<span class="text-primary">可</span></div>
+                                            <% elsif @random_new_books[1].lending == 1 %>
+                                                <div class="h4 mt-3">貸出:<span class="text-danger">不</span></div>
+                                            <% end %><br>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
                     </td></tr>
                 </table>
             </div>
       
-        
-        <div class="">
-            <div class= " text-center h3">図書館司書おすすめの本</div>
-                <div class="row border">
+            <div class="border-top p-1"></div>
+            <div class= " text-center h3 ">図書館司書おすすめの本</div>
+                <div class="row">
                     <div class="row parent-recommend d-flex">
                         <% 3.times do |idx| %>
                             <% recommend_book = @recommend_books.find_by(id_coppy: idx + 1) %>
@@ -80,72 +86,70 @@
                                     <% end %>
                                     </figure>
                                     </div>
-                                    <div class="card__body_02">
+                                    <div class="card__body_02 ">
                                         <p class="card__text2_02"><%= recommend_book.author_name %><br></p>
-                                        <p class="card__text2_02"><%= "おすすめ理由 : " + recommend_book.recommend %><br></p>
+                                        <p class="card__text2_02 "><%= "おすすめ理由 : " + recommend_book.recommend %><br></p>
                                     </div>   
                                 </article>
                             </div>
                         <% end %>
                     </div>
                 </div>
-        </div>
  
     </div>
 
     
     <div class="col-12 col-sm-4 border d-flex flex-column bd-highlight">
             <div class="text-center h3">月間ランキング</div>
-            <div class="p-2 bd-highlight">
-                <table class="tag border p-4 table_ranking">
+            <div class="border-top p-1"></div>
+            <div class="p-2 bd-highlight w-100">
+            <%= image_tag 'iti.png',:width => '60' %>
+                <table class="tag border p-3 table_ranking card h5">
                     <tr>
                         <% if @first_rankings.bookcover.present? %>
                             <td rowspan="4"><%= image_tag @first_rankings.bookcover, :width => '150' %></td>
                         <% end %>
                         <br>
-
-                        <th>ISBN番号 :</th><td><%=@first_rankings.isbn_number %></td>
                     </tr>
-                        <tr>
-                            <th>書籍名 :</th><td><%= @first_rankings.title %></td>
-                        </tr>
-                        <tr>
-                            <th>著者名 :</th><td><%=@first_rankings.author_name %></td>
-                        </tr>
-                        <tr>
-                            <th>ランキング :</th><td><%=@first_rankings.book_rank.to_s %></td>
-                        </tr>
+                    <tr>
+                        <th>書籍名 :</th><td><%= @first_rankings.title %></td>
+                    </tr>
+                    <tr>
+                        <th>著者名 :</th><td><%=@first_rankings.author_name %></td>
+                    </tr>
+                    <tr>
+                        <th>ランキング :</th><td><%=@first_rankings.book_rank.to_s %></td>
+                    </tr>
                 </table>
             </div>
-            <div class="p-2 bd-highlight">
-                <table class="tag border p-4 table_ranking">
+            <div class="p-2 bd-highlight w-100">
+             <%= image_tag 'ni.png',:width => '60' %>
+                <table class="tag border p-3 table_ranking card h5">
                     <tr>
                         <% if @second_rankings.bookcover.present? %>
                             <td rowspan="4"><%= image_tag @second_rankings.bookcover, :width => '150' %></td>
                         <% end %>
                         <br>
-
-                        <th>ISBN番号 :</th><td><%=@second_rankings.isbn_number %></td>
                     </tr>
-                        <tr>
-                            <th>書籍名 :</th><td><%= @second_rankings.title %></td>
-                        </tr>
-                        <tr>
-                            <th>著者名 :</th><td><%=@second_rankings.author_name %></td>
-                        </tr>
-                        <tr>
-                            <th>ランキング :</th><td><%=@second_rankings.book_rank.to_s %></td>
-                        </tr>
+                    <tr>
+                        <th>書籍名 :</th><td><%= @second_rankings.title %></td>
+                    </tr>
+                    <tr>
+                        <th>著者名 :</th><td><%=@second_rankings.author_name %></td>
+                    </tr>
+                    <tr>
+                        <th>ランキング :</th><td><%=@second_rankings.book_rank.to_s %></td>
+                    </tr>
                 </table>
             </div>
             <div class="p-2 bd-highlight">
-                <table class="tag border p-4 table_ranking">
+                <%= image_tag 'san.png',:width => '60' %>
+                <table class="tag border p-3 table_ranking card h5">
                     <tr>
                         <% if @third_rankings.bookcover.present? %>
                             <td rowspan="4"><%= image_tag @third_rankings.bookcover, :width => '150' %></td>
                         <% end %>
                         <br>
-                        <th>ISBN番号 :</th><td><%=@third_rankings.isbn_number %></td>
                     </tr>
                     <tr>
                         <th>書籍名 :</th><td><%= @third_rankings.title %></td>

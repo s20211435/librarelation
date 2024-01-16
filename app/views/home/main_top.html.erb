@@ -42,9 +42,9 @@
                                 <div class="col-12 h2 text-center border-bottom"><%=@random_new_books[1].title %></div>
                             </div>
                             <div class="row">
-                                <div class="col-5 center-block text-center "><%= image_tag @random_new_books[1].bookcover, :width => '200' %></div>
+                                <div class="col text-center p-0"><%= image_tag @random_new_books[1].bookcover, :width => '200' %></div>
                                 <div class="col-7 d-flex flex-column justify-content-around h5">
-                                    <div class="col h2"><%=@random_new_books[1].author_name %></div>
+                                    <div class="col"><%=@random_new_books[1].author_name %></div>
                                     <div class="col">ジャンル:<%= @random_new_books[1].genre %></div>
                                     <div class="col">入館日:<%= @random_new_books[1].arrival_day.to_s %></div>
                                     <div class="col">在館冊数:<%= @random_new_books[1].book_number.to_s %></div>

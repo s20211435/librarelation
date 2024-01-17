@@ -1,0 +1,114 @@
+.top_header
+  = image_tag 'll_logo.png',:width => '220',:height => '110'
+  button.btn.btn-border onclick="location.href='/admin/top'"
+    | 管理者ログインページ
+  button.btn.btn-border onclick="location.href='/dealing/top.html'"
+    | 処分本リスト
+  button.btn.btn-border onclick="location.href='/requests/isbn_search'"
+    | 新刊リクエスト
+
+.row.bg-note
+  .col-12.col-sm-8.row
+    .text-center.h3.mb-4
+      | 新刊紹介
+    - 2.times do |i|
+      .border.p-3.newbook.card.card-width.col-12.col-md
+        .row
+          .col-12.h2.text-center.border-bottom
+						= @random_new_books[i].title
+        
+        .row
+          .col-5.center-block.text-center = image_tag @random_new_books[i].bookcover, :width => '200'
+          .col-7.d-flex.flex-column.justify-content-around.h5
+            .col.h2 = @random_new_books[i].author_name
+            .col
+              = "ジャンル: #{@random_new_books[i].genre}"
+            .col
+              = "入館日: #{@random_new_books[i].arrival_day.to_s}"
+            .col
+              = "在館冊数: #{@random_new_books[i].book_number.to_s}"
+            .col
+              .ribbon01
+                .col-5.text-center.d-inline.h5
+                   - if @random_new_books[i].lending == 0
+                    .h4.mt-3
+                      | 貸出: 
+                      span.text-primary
+                        | 可
+                   - elsif @random_new_books[i].lending == 1
+                    .h4.mt-3
+                      | 貸出: 
+                      span.text-danger
+                        | 不
+
+    
+    .border-top.p-1
+    .text-center.h3
+      | 図書館司書おすすめの本
+    
+    .row.parent-recommend.d-flex
+      - 3.times do |idx|
+        - recommend_book = @recommend_books.find_by(id_coppy: idx + 1)
+        .col-12.col-md.p-3.l-wrapper_02.card-radius_02
+          article.card_02
+            .card__header_02
+              p.card__title_02
+                = recommend_book.title
+                br
+              figure.card__thumbnail_02
+                - if recommend_book.bookcover.present?
+                  div = image_tag recommend_book.bookcover, :width => '150'
+                  br
+            
+            .card__body_02
+              p.card__text2_02 = recommend_book.author_name
+                br
+              p.card__text2_02 = "おすすめ理由 : " + recommend_book.recommend
+                br
+  
+
+  .col.col-sm-4.border.d-flex.flex-column.bd-highlight
+    .text-center.h3
+      | 月間ランキング
+    .border-top.p-1
+    .p-2.bd-highlight.w-100
+      = image_tag 'iti.png',:width => '60'
+      .border.p-3.newbook.card.card-width.col-12.col-md
+        .row
+          .col-12.h2.text-center.border-bottom
+            = @first_rankings.title
+        
+        .row
+          .col-5.center-block.text-center = image_tag @first_rankings.bookcover, :width => '200'
+          .col-7.d-flex.flex-column.justify-content-around.h5
+            .col.h2 = @first_rankings.author_name
+            .col
+              = "ランキング: #{@first_rankings.book_rank.to_s}"
+
+    .p-2.bd-highlight
+      = image_tag 'ni.png',:width => '60'
+      .border.p-3.newbook.card.card-width.col-12.col-md
+        .row
+          .col-12.h2.text-center.border-bottom
+            = @second_rankings.title
+        
+        .row
+          .col-5.center-block.text-center = image_tag @second_rankings.bookcover, :width => '200'
+          .col-7.d-flex.flex-column.justify-content-around.h5
+            .col.h2 = @second_rankings.author_name
+            .col
+              = "ランキング: #{@second_rankings.book_rank.to_s}"
+    
+    .p-2.bd-highlight
+      = image_tag 'san.png',:width => '60'
+      .border.p-3.newbook.card.card-width.col-12.col-md
+        .row
+          .col-12.h2.text-center.border-bottom
+            = @third_rankings.title
+        
+        .row
+          .col-5.center-block.text-center = image_tag @third_rankings.bookcover, :width => '200'
+          .col-7.d-flex.flex-column.justify-content-around.h5
+            .col.h2 = @third_rankings.author_name
+            .col
+              = "ランキング: #{@third_rankings.book_rank.to_s}"

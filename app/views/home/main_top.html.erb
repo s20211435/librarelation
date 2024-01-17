@@ -104,62 +104,95 @@
             <div class="border-top p-1"></div>
             <div class="p-2 bd-highlight w-100">
             <%= image_tag 'iti.png',:width => '60' %>
-                <table class="tag border p-3 table_ranking card h5">
-                    <tr>
-                        <% if @first_rankings.bookcover.present? %>
-                            <td rowspan="4"><%= image_tag @first_rankings.bookcover, :width => '150' %></td>
-                        <% end %>
-                        <br>
-                    </tr>
-                    <tr>
-                        <th>書籍名 :</th><td><%= @first_rankings.title %></td>
-                    </tr>
-                    <tr>
-                        <th>著者名 :</th><td><%=@first_rankings.author_name %></td>
-                    </tr>
-                    <tr>
-                        <th>ランキング :</th><td><%=@first_rankings.book_rank.to_s %></td>
-                    </tr>
+           <table class="tag m-auto">
+                    <tr><td>
+                        <div class="border p-3 rankig card card-width">
+                            <div class="row">
+                                <div class="col-12 h3 text-center border-bottom"><%=@first_rankings.title %></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-5 center-block text-center"><%= image_tag @first_rankings.bookcover, :width => '200' %></div>
+                                <div class="col-7 d-flex flex-column justify-content-around h5">
+                                    <div class="col h3"><%=@first_rankings.author_name %></div>
+                                    <div class="col">ランキング:<%= @first_rankings.book_rank.to_s %></div>
+                                    <div class="col">ジャンル:<%= @first_rankings.genre %></div>
+                                    <div class="col">在館冊数:<%= @first_rankings.book_number %></div>
+                                    <div class="col">
+                                        <div class="ribbon01">
+                                            <div class="col-5 text-center d-inline h6 ">
+                                                <% if @first_rankings.lending == 0 %>
+                                                    <div class="h5 mt-3">貸出:<span class="text-primary">可</span></div>
+                                                <% elsif @first_rankings.lending == 1 %>
+                                                    <div class="h5 mt-3">貸出:<span class="text-danger">不</span></div>
+                                                <% end %><br>
+                                            </div>
+                                        </div>
+                                    <div>
+                                </div>
+                            </div> 
+                        </div>
                 </table>
             </div>
             <div class="p-2 bd-highlight w-100">
              <%= image_tag 'ni.png',:width => '60' %>
-                <table class="tag border p-3 table_ranking card h5">
-                    <tr>
-                        <% if @second_rankings.bookcover.present? %>
-                            <td rowspan="4"><%= image_tag @second_rankings.bookcover, :width => '150' %></td>
-                        <% end %>
-                        <br>
-                    </tr>
-                    <tr>
-                        <th>書籍名 :</th><td><%= @second_rankings.title %></td>
-                    </tr>
-                    <tr>
-                        <th>著者名 :</th><td><%=@second_rankings.author_name %></td>
-                    </tr>
-                    <tr>
-                        <th>ランキング :</th><td><%=@second_rankings.book_rank.to_s %></td>
-                    </tr>
+                <table class="tag m-auto">
+                    <tr><td>
+                        <div class="border p-3 rankig card card-width">
+                            <div class="row">
+                                <div class="col-12 h2 text-center border-bottom"><%=@second_rankings.title %></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-5 center-block text-center"><%= image_tag @second_rankings.bookcover, :width => '200' %></div>
+                                <div class="col-7 d-flex flex-column justify-content-around h5">
+                                    <div class="col h2"><%=@second_rankings.author_name %></div>
+                                    <div class="col">ランキング:<%= @second_rankings.book_rank.to_s %></div>
+                                    <div class="col">ジャンル:<%= @second_rankings.genre %></div>
+                                    <div class="col">在館冊数:<%= @second_rankings.book_number %></div>
+                                    <div class="col">
+                                        <div class="ribbon01">
+                                            <div class="col-5 text-center d-inline h5 ">
+                                                <% if @second_rankings.lending == 0 %>
+                                                    <div class="h4 mt-3">貸出:<span class="text-primary">可</span></div>
+                                                <% elsif @second_rankings.lending == 1 %>
+                                                    <div class="h4 mt-3">貸出:<span class="text-danger">不</span></div>
+                                                <% end %><br>
+                                            </div>
+                                        </div>
+                                    <div>
+                                </div>
+                            </div> 
+                        </div>
                 </table>
             </div>
             <div class="p-2 bd-highlight">
                 <%= image_tag 'san.png',:width => '60' %>
-                <table class="tag border p-3 table_ranking card h5">
-                    <tr>
-                        <% if @third_rankings.bookcover.present? %>
-                            <td rowspan="4"><%= image_tag @third_rankings.bookcover, :width => '150' %></td>
-                        <% end %>
-                        <br>
-                    </tr>
-                    <tr>
-                        <th>書籍名 :</th><td><%= @third_rankings.title %></td>
-                    </tr>
-                    <tr>
-                        <th>著者名 :</th><td><%=@third_rankings.author_name %></td>
-                    </tr>
-                    <tr>
-                        <th>ランキング :</th><td><%=@third_rankings.book_rank.to_s %></td>
-                    </tr>
+                 <table class="tag m-auto">
+                    <tr><td>
+                        <div class="border p-3 rankig card card-width">
+                            <div class="row">
+                                <div class="col-12 h2 text-center border-bottom"><%=@third_rankings.title %></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-5 center-block text-center"><%= image_tag @third_rankings.bookcover, :width => '200' %></div>
+                                <div class="col-7 d-flex flex-column justify-content-around h5">
+                                    <div class="col h2"><%=@third_rankings.author_name %></div>
+                                    <div class="col">ランキング:<%= @third_rankings.book_rank.to_s %></div>
+                                    <div class="col">ジャンル:<%= @third_rankings.genre %></div>
+                                    <div class="col">在館冊数:<%= @third_rankings.book_number %></div>
+                                    <div class="col">
+                                        <div class="ribbon01">
+                                            <div class="col-5 text-center d-inline h5 ">
+                                                <% if @third_rankings.lending == 0 %>
+                                                    <div class="h4 mt-3">貸出:<span class="text-primary">可</span></div>
+                                                <% elsif @third_rankings.lending == 1 %>
+                                                    <div class="h4 mt-3">貸出:<span class="text-danger">不</span></div>
+                                                <% end %><br>
+                                            </div>
+                                        </div>
+                                    <div>
+                                </div>
+                            </div> 
+                        </div>
                 </table>
             </div>
         </div>

@@ -116,10 +116,10 @@ class RankingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ranking_params
-      params.require(:ranking).permit(:isbn_number, :title, :author_name, :book_rank, :bookcover)
+      params.require(:ranking).permit(:isbn_number, :title, :author_name, :book_rank, :bookcover,:genre,:book_number,:lending)
     end
 
     def ranking_params_except_bookcover
-      params.require(:ranking).permit(:isbn_number, :title, :author_name, :book_rank)
+      params.require(:ranking).permit(:isbn_number, :title, :author_name, :book_rank, :genre, :book_number, :lending)
     end
 end

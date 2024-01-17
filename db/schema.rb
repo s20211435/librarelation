@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_11_15_020929) do
+ActiveRecord::Schema.define(version: 2024_01_16_012828) do
 
   create_table "dealings", force: :cascade do |t|
     t.string "isbn_number"
@@ -52,6 +52,9 @@ ActiveRecord::Schema.define(version: 2023_11_15_020929) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "bookcover"
+    t.string "genre"
+    t.integer "lending"
+    t.integer "book_number"
   end
 
   create_table "recommend_books", force: :cascade do |t|

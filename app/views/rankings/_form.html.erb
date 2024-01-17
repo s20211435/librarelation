@@ -22,6 +22,21 @@
   </div>
 
   <div class="field">
+    <%= form.label "ジャンル" %>
+    <%= form.text_field :genre %>
+  </div>
+  
+  <div class="field">
+    <%= form.label "貸出" %>
+    <%= form.number_field :lending %>
+  </div>
+
+  <div class="field">
+    <%= form.label "冊数" %>
+    <%= form.number_field :book_number %>
+  </div>
+
+  <div class="field">
     <%= form.label "著者名" %>
     <%= form.text_field :author_name %>
   </div>

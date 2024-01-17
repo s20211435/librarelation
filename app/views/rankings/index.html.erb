@@ -9,6 +9,9 @@
       <th>書籍名</th>
       <th>著者名</th>
       <th>順位</th>
+      <th>貸出</th>
+      <th>冊数</th>
+      <th>ジャンル</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,6 +23,15 @@
         <td><%= ranking.title %></td>
         <td><%= ranking.author_name %></td>
         <td><%= ranking.book_rank %></td>
+        <td>     
+          <% if ranking.lending == 0 %>
+            <%= "可" %>
+          <% elsif ranking.lending == 1 %>
+            <%= "不可" %>
+          <% end %>
+        </td>
+        <td><%= ranking.book_number %></td>
+        <td><%= ranking.genre %></td>
         <td><%= button_to '詳細', ranking, {method: :get, class: 'btn btn-outline-dark'} %></td>
         <td><%= button_to '編集', edit_ranking_path(ranking), {method: :get, class: 'btn btn-outline-dark'} %></td>
         <td><%= button_to '削除', ranking, class: 'btn btn-outline-dark', method: :delete, data: { confirm: '本当に削除しますか？' } %></td>

@@ -21,16 +21,6 @@ ActiveRecord::Schema.define(version: 2024_01_16_012828) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "new_book_subs", force: :cascade do |t|
-    t.string "isbn_number"
-    t.string "title"
-    t.string "author_name"
-    t.date "arrival_day"
-    t.integer "number_field"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "new_books", force: :cascade do |t|
     t.string "isbn_number"
     t.string "title"

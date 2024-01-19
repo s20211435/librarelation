@@ -79,11 +79,28 @@
             = @first_rankings.title
         
         .row
-          .col-5.center-block.text-center = image_tag @first_rankings.bookcover, :width => '200'
+          .col-5.center-block.text-center = image_tag @first_rankings.bookcover, :width => '150'
           .col-7.d-flex.flex-column.justify-content-around.h5
             .col.h2 = @first_rankings.author_name
             .col
               = "ランキング: #{@first_rankings.book_rank.to_s}"
+            .col
+              = "ジャンル: #{@first_rankings.genre}"
+            .col
+              = "在館冊数: #{@first_rankings.book_number.to_s}"
+            .col
+              .ribbon01
+                .col-5.text-center.d-inline.h5
+                   - if @first_rankings.lending == 0
+                    .h4.mt-3
+                      | 貸出: 
+                      span.text-primary
+                        | 可
+                   - elsif @first_rankings.lending == 1
+                    .h4.mt-3
+                      | 貸出: 
+                      span.text-danger
+                        | 不
 
     .p-2.bd-highlight
       = image_tag 'ni.png',:width => '60'
@@ -93,11 +110,28 @@
             = @second_rankings.title
         
         .row
-          .col-5.center-block.text-center = image_tag @second_rankings.bookcover, :width => '200'
+          .col-5.center-block.text-center = image_tag @second_rankings.bookcover, :width => '150'
           .col-7.d-flex.flex-column.justify-content-around.h5
             .col.h2 = @second_rankings.author_name
             .col
               = "ランキング: #{@second_rankings.book_rank.to_s}"
+            .col
+              = "ジャンル: #{@first_rankings.genre}"
+            .col
+              = "在館冊数: #{@first_rankings.book_number.to_s}"
+            .col
+              .ribbon01
+                .col-5.text-center.d-inline.h5
+                   - if @first_rankings.lending == 0
+                    .h4.mt-3
+                      | 貸出: 
+                      span.text-primary
+                        | 可
+                   - elsif @first_rankings.lending == 1
+                    .h4.mt-3
+                      | 貸出: 
+                      span.text-danger
+                        | 不
     
     .p-2.bd-highlight
       = image_tag 'san.png',:width => '60'
@@ -107,8 +141,25 @@
             = @third_rankings.title
         
         .row
-          .col-5.center-block.text-center = image_tag @third_rankings.bookcover, :width => '200'
+          .col-5.center-block.text-center = image_tag @third_rankings.bookcover, :width => '150'
           .col-7.d-flex.flex-column.justify-content-around.h5
             .col.h2 = @third_rankings.author_name
             .col
               = "ランキング: #{@third_rankings.book_rank.to_s}"
+            .col
+              = "ジャンル: #{@first_rankings.genre}"
+            .col
+              = "在館冊数: #{@first_rankings.book_number.to_s}"
+            .col
+              .ribbon01
+                .col-5.text-center.d-inline.h5
+                   - if @first_rankings.lending == 0
+                    .h4.mt-3
+                      | 貸出: 
+                      span.text-primary
+                        | 可
+                   - elsif @first_rankings.lending == 1
+                    .h4.mt-3
+                      | 貸出: 
+                      span.text-danger
+                        | 不

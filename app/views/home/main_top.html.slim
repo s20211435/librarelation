@@ -77,7 +77,6 @@
         .row
           .col-12.h2.text-center.border-bottom
             = @first_rankings.title
-        
         .row
           .col-5.center-block.text-center = image_tag @first_rankings.bookcover, :width => '200'
           .col-7.d-flex.flex-column.justify-content-around.h5
@@ -91,11 +90,16 @@
         .row
           .col-12.h2.text-center.border-bottom
             = @second_rankings.title
-        
         .row
           .col-5.center-block.text-center = image_tag @second_rankings.bookcover, :width => '200'
           .col-7.d-flex.flex-column.justify-content-around.h5
             .col.h2 = @second_rankings.author_name
+            .col
+              = "ランキング: #{@second_rankings.book_rank.to_s}"
+            .col
+              = "ggggg: #{@second_rankings.book_number}"
+            .col
+              = "ランキング: #{@second_rankings.genre}"
             .col
               = "ランキング: #{@second_rankings.book_rank.to_s}"
     

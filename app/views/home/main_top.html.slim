@@ -9,8 +9,8 @@
 
 .row.bg-note
   .col-12.col-sm-8.row
-    .text-center.h3.mb-4
-      | 新刊紹介
+    .text-center.h3.mb-4.kasen
+      h2. 新刊紹介
     - 2.times do |i|
       .border.p-3.newbook.card.card-width.col-12.col-md
         .row
@@ -43,8 +43,8 @@
 
     
     .border-top.p-1
-    .text-center.h3
-      | 図書館司書おすすめの本
+    .text-center.h3.kasen
+      h2. 図書館司書おすすめの本
     
     .row.parent-recommend.d-flex
       - 3.times do |idx|
@@ -68,8 +68,8 @@
   
 
   .col.col-sm-4.border.d-flex.flex-column.bd-highlight
-    .text-center.h3
-      | 月間ランキング
+    .text-center
+      h2. 月間ランキング
     .border-top.p-1
     .p-2.bd-highlight.w-100
       = image_tag 'iti.png',:width => '60'
@@ -78,7 +78,7 @@
           .col-12.h2.text-center.border-bottom
             = @first_rankings.title
         .row
-          .col-5.center-block.text-center = image_tag @first_rankings.bookcover, :width => '150'
+          .col-5.center-block.text-center = image_tag @first_rankings.bookcover, :width => '130'
           .col-7.d-flex.flex-column.justify-content-around.h5
             .col.h2 = @first_rankings.author_name
             .col
@@ -108,7 +108,7 @@
           .col-12.h2.text-center.border-bottom
             = @second_rankings.title
         .row
-          .col-5.center-block.text-center = image_tag @second_rankings.bookcover, :width => '150'
+          .col-5.center-block.text-center = image_tag @second_rankings.bookcover, :width => '130'
           .col-7.d-flex.flex-column.justify-content-around.h5
             .col.h2 = @second_rankings.author_name
             .col
@@ -139,24 +139,24 @@
             = @third_rankings.title
         
         .row
-          .col-5.center-block.text-center = image_tag @third_rankings.bookcover, :width => '150'
+          .col-5.center-block.text-center = image_tag @third_rankings.bookcover, :width => '130'
           .col-7.d-flex.flex-column.justify-content-around.h5
             .col.h2 = @third_rankings.author_name
             .col
               = "ランキング: #{@third_rankings.book_rank.to_s}"
             .col
-              = "ジャンル: #{@first_rankings.genre}"
+              = "ジャンル: #{@third_rankings.genre}"
             .col
-              = "在館冊数: #{@first_rankings.book_number.to_s}"
+              = "在館冊数: #{@third_rankings.book_number.to_s}"
             .col
               .ribbon01
                 .col-5.text-center.d-inline.h5
-                   - if @first_rankings.lending == 0
+                   - if @third_rankings.lending == 0
                     .h4.mt-3
                       | 貸出: 
                       span.text-primary
                         | 可
-                   - elsif @first_rankings.lending == 1
+                   - elsif @third_rankings.lending == 1
                     .h4.mt-3
                       | 貸出: 
                       span.text-danger

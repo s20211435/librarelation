@@ -1,6 +1,31 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+h2 {
+  position: relative;
+  display: inline-block;
+  padding: 0 55px;
+  
+}
+
+h2:before, h2:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  display: inline-block;
+  width: 45px;
+  height: 2px;
+  border-top: solid 1px black;
+  border-bottom: solid 1px black;
+}
+
+h2:before {
+  left:0;
+}
+h2:after {
+  right: 0;
+}
+
 body{
   width: auto;
 }

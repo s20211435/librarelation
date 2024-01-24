@@ -39,7 +39,7 @@
   <strong>名前</strong>
   <%= @request.name %>
 </p>
-<% if request.referer&.include?("http://localhost:3000/requests/new?isbn") %>
+<% if request.referer&.include?("/requests/new?isbn") %>
 <%= link_to '戻る',  home_main_top_path  %>
  
 <% else %>

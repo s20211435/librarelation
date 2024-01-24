@@ -23,7 +23,7 @@
       .border.p-3.newbook.card.card-width.col-12.col-md
         .row
           .col-12.h2.text-center.border-bottom
-						= @random_new_books[i].title
+            = @random_new_books[i].title
         
         .row
           .col-5.center-block.text-center = image_tag @random_new_books[i].bookcover, :width => '200'
@@ -81,7 +81,7 @@
         .p-2.w-100.ranking
           h2. 月間ランキング
         .p-2.flex-shrink-1.sidebutton
-          a.btn.btn-radius-solid href='/new_book_sub/show_page'
+          a.btn.btn-radius-solid href='/rankings_sub/show_page'
             | もっと見る
             i.fas.fa-angle-right.fa-position-right
     .border-top.p-1

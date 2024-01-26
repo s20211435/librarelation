@@ -39,8 +39,7 @@
   <strong>ブックカバー</strong>
   <%= @new_book.bookcover %>
 </p>
-
-<% if request.referer&.include?("localhost:3000/new_books") %>
+<% if request.referer&.include?("/new_books") %>
   <%= link_to '編集', edit_new_book_path(@new_book) %> |
   <%= link_to '戻る', new_books_path %>
 <% else %>

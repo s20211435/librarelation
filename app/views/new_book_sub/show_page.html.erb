@@ -1,12 +1,14 @@
 <h1>新刊ページ一覧</h1>
-<% @all_new_books.each do |new_books| %>
-    <div class="row border">
-                <% if new_books.bookcover.present? %>
-                    <%= link_to image_tag(new_books.bookcover, width: 200), new_book_path(new_books.id) %>
-                <% else %>
-                  <%= link_to "画像データが入っていません", new_book_path(new_books.id) %>
-                <% end %>
-              <div><%=new_books.title %></div>
+<div class="d-flex flex-wrap" >
+  <% @all_new_books.each do |new_books| %>
+    <div class="border p-3 d-flex justify-content-evenly newbook card card-width col-md ">
+      <% if new_books.bookcover.present? %>
+        <%= link_to image_tag(new_books.bookcover, width: 200), new_book_path(new_books.id) %>
+      <% else %>
+        <%= link_to "画像データが入っていません", new_book_path(new_books.id) %>
+      <% end %>
+      <div><%=new_books.title %></div>
     </div>
-<% end %>
+  <% end %>
+</div>
 <%= link_to '戻る', home_main_top_path %>

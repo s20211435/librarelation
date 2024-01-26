@@ -1,17 +1,17 @@
 .top_header
   = image_tag 'll_logo.png',:width => '220',:height => '110'
-  button.btn.btn-border onclick="location.href='/admin/top'"
-    | 管理者ログインページ
-  button.btn.btn-border onclick="location.href='/dealing/top.html'"
-    | 処分本リスト
   button.btn.btn-border onclick="location.href='/requests/isbn_search'"
     | 新刊リクエスト
+  button.btn.btn-border onclick="location.href='/dealing/top.html'"
+    | 処分本リスト
+  button.btn.righting.btn-border onclick="location.href='/admin/top'"
+    | 管理者ログインページ
 
 .row.bg-note
   .col-12.col-sm-8.row
     .text-center.h3.mb-4.kasen
     .d-flex
-      .p-2.w-100 
+      .p-2.w-100.shinkan
         h2. 新刊紹介
       .p-2.flex-shrink-1.sidebutton
         a.btn.btn-radius-solid href='/new_book_sub/show_page'
@@ -23,7 +23,7 @@
       .border.p-3.newbook.card.card-width.col-12.col-md
         .row
           .col-12.h2.text-center.border-bottom
-						= @random_new_books[i].title
+            = @random_new_books[i].title
         
         .row
           .col-5.center-block.text-center = image_tag @random_new_books[i].bookcover, :width => '200'
@@ -78,10 +78,10 @@
   .col.col-sm-4.border.d-flex.flex-column.bd-highlight
     .text-center
       .d-flex
-        .p-2.w-100 
+        .p-2.w-100.ranking
           h2. 月間ランキング
         .p-2.flex-shrink-1.sidebutton
-          a.btn.btn-radius-solid href='/new_book_sub/show_page'
+          a.btn.btn-radius-solid href='/rankings_sub/show_page'
             | もっと見る
             i.fas.fa-angle-right.fa-position-right
     .border-top.p-1

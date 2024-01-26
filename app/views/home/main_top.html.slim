@@ -10,7 +10,15 @@
 .row.bg-note
   .col-12.col-sm-8.row
     .text-center.h3.mb-4.kasen
-      h2. 新刊紹介
+    .d-flex
+      .p-2.w-100 
+        h2. 新刊紹介
+      .p-2.flex-shrink-1.sidebutton
+        a.btn.btn-radius-solid href='/new_book_sub/show_page'
+          | もっと見る
+          i.fas.fa-angle-right.fa-position-right
+      
+      
     - 2.times do |i|
       .border.p-3.newbook.card.card-width.col-12.col-md
         .row
@@ -69,7 +77,13 @@
 
   .col.col-sm-4.border.d-flex.flex-column.bd-highlight
     .text-center
-      h2. 月間ランキング
+      .d-flex
+        .p-2.w-100 
+          h2. 月間ランキング
+        .p-2.flex-shrink-1.sidebutton
+          a.btn.btn-radius-solid href='/new_book_sub/show_page'
+            | もっと見る
+            i.fas.fa-angle-right.fa-position-right
     .border-top.p-1
     .p-2.bd-highlight.w-100
       = image_tag 'iti.png',:width => '60'

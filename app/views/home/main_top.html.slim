@@ -1,11 +1,11 @@
 .top_header
   = image_tag 'll_logo.png',:width => '220',:height => '110'
-  button.btn.btn-border onclick="location.href='/admin/top'"
-    | 管理者ログインページ
-  button.btn.btn-border onclick="location.href='/dealing/top.html'"
-    | 処分本リスト
   button.btn.btn-border onclick="location.href='/requests/isbn_search'"
     | 新刊リクエスト
+  button.btn.btn-border onclick="location.href='/dealing/top.html'"
+    | 処分本リスト
+  button.btn.righting.btn-border onclick="location.href='/admin/top'"
+    | 管理者ログインページ
 
 .row.bg-note
   .col-12.col-sm-8.row
